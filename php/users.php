@@ -18,6 +18,26 @@ require_once("logFiles.php");
 *
 *
 */
+
+/*
+//DATABASE
+
+CREATE TABLE `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(255) NOT NULL,
+ `password` varchar(255) NOT NULL,
+ `email` varchar(255) NOT NULL,
+ `state` varchar(255) NOT NULL,
+ `privilege` varchar(255) NOT NULL,
+ `created` datetime NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `username` (`username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+*/
+
+
 class User
 {
 
