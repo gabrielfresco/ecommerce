@@ -9,7 +9,7 @@ define("SQL_HOSTNAME","127.0.0.1");
 
 # Otros
 
-define("ABSOLUTE_PATH","/var/www/html/backend/");
-define("LOG_FILE","/var/www/html/backend/logs/fileLog.log");
+define("ABSOLUTE_PATH","C:\\xampp\htdocs\Ecommerce\ecommerce\php");
+define("LOG_FILE","C:\\xampp\htdocs\Ecommerce\ecommerce\php\logs\fileLog.log");
 define("ERROR_404","Location: 404.php");
 ?>
