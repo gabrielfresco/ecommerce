@@ -62,9 +62,9 @@ class User
 
         if($result = $mysqli->query($sqlProcedure))
         {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
             if(count($row) > 0)
             {
-                $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->id = $row["id"];
                 $this->username = $row["username"];
                 $this->password = $row["password"];
@@ -304,6 +304,6 @@ class User
 //Test:
 $us = new User();
 //var_dump($us);
-$us->findUserByName("rodrigo");
+$us->findUserByName("chavesie");
 echo $us->getUsername();
 ?>
