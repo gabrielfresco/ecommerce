@@ -304,6 +304,6 @@ class User
 //Test:
 $us = new User();
 //var_dump($us);
-$us->findUserByName("chavesie");
+$us->findUserByName("juan");
 echo $us->getUsername();
 ?>
