@@ -46,7 +46,7 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-md-block d-none">
-            <p>Contact us on +420 777 555 333 or hello@universal.com.</p>
+            <p><a href="#">Sucursales</a></p> <!-- stores.html -->
           </div>
           <div class="col-md-6">
             <div class="d-flex justify-content-md-end justify-content-between">
@@ -54,9 +54,8 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
               </ul>
-              <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a>
-                <a
-                  href="customer-register.html" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Sign Up</span></a>
+              <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Iniciar Sesión</span></a>
+                <a href="customer-register.html" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Registrarse</span></a>
               </div>
               <ul class="social-custom list-inline">
                 <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -70,34 +69,34 @@
       </div>
     </div>
     <!-- Top bar end-->
-<!-- Login Modal-->
-<div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
-  <div role="document" class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="login-modalLabel" class="modal-title">Login de Cliente</h4>
-        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-      </div>
-      <div class="modal-body">
-        <form action="customer-orders.html" method="post">
-          <div class="form-group">
-            <input id="email_modal" type="text" placeholder="email" class="form-control">
+    <!-- Login Modal-->
+    <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="login-modalLabel" class="modal-title">Login de Cliente</h4>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
           </div>
-          <div class="form-group">
-            <input id="password_modal" type="password" placeholder="password" class="form-control">
+          <div class="modal-body">
+            <form action="customer-orders.html" method="post">
+              <div class="form-group">
+                <input id="email_modal" type="text" placeholder="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <input id="password_modal" type="password" placeholder="password" class="form-control">
+              </div>
+              <p class="text-center">
+                <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
+              </p>
+            </form>
+            <p class="text-center text-muted">No te registraste aún?</p>
+            <p class="text-center text-muted"><a href="customer-register.html"><strong>Registrate ahora</strong></a>! Es facil y lo podes hacer en 1 minuto!
+           </p>
           </div>
-          <p class="text-center">
-            <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
-          </p>
-        </form>
-        <p class="text-center text-muted">No te registraste aún?</p>
-        <p class="text-center text-muted"><a href="customer-register.html"><strong>Registrate ahora</strong></a>! Es facil y lo podes hacer en 1 minuto y podrás
-          a descuentos únicos y mucho más!</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Login modal end-->
+    <!-- Login modal end-->
     <!-- Navbar Start-->
     <header class="nav-holder make-sticky">
       <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
@@ -303,13 +302,13 @@
       <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
           <div class="col-md-7">
-            <h1 class="h2">Order # 1735</h1>
+            <h1 class="h2">Pedido # 1735</h1>
           </div>
           <div class="col-md-5">
             <ul class="breadcrumb d-flex justify-content-end">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="customer-orders.html">My Orders</a></li>
-              <li class="breadcrumb-item active">Order # 1735</li>
+              <li class="breadcrumb-item"><a href="customer-orders.html">Mis pedidos</a></li>
+              <li class="breadcrumb-item active">Pedido # 1735</li>
             </ul>
           </div>
         </div>
@@ -319,33 +318,32 @@
       <div class="container">
         <div class="row bar">
           <div id="customer-order" class="col-lg-9">
-            <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
-            <p class="lead text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center
-              is working for you 24/7.</p>
+            <p class="lead">El pedido #1735 fue hecho el <strong>22/03/2018</strong> y en este momento <strong>esta siendo preparado</strong>.</p>
+            <p class="lead text-muted">Si usted tiene alguna pregunta, por favor sientase libre de <a href="contact.html">contactarnos</a>, nuestro servicio de atencion esta trabajando para vos los 24/7.</p>
             <div class="box">
               <div class="table-responsive">
                 <table class="table">
                   <thead>
                     <tr>
-                      <th colspan="2" class="border-top-0">Product</th>
-                      <th class="border-top-0">Quantity</th>
-                      <th class="border-top-0">Unit price</th>
-                      <th class="border-top-0">Discount</th>
+                      <th colspan="2" class="border-top-0">Producto</th>
+                      <th class="border-top-0">Cantidad</th>
+                      <th class="border-top-0">Precio unitario</th>
+                      <th class="border-top-0">Descuento</th>
                       <th class="border-top-0">Total</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani" class="img-fluid"></a></td>
-                      <td><a href="#">White Blouse Armani</a></td>
+                      <td><a href="#"><img src="img/detailsquare.jpg" alt="Tv LG 42'" class="img-fluid"></a></td>
+                      <td><a href="#">Tv LG 42'</a></td>
                       <td>2</td>
                       <td>$123.00</td>
                       <td>$0.00</td>
                       <td>$246.00</td>
                     </tr>
                     <tr>
-                      <td><a href="#"><img src="img/basketsquare.jpg" alt="Black Blouse Armani" class="img-fluid"></a></td>
-                      <td><a href="#">Black Blouse Armani</a></td>
+                      <td><a href="#"><img src="img/basketsquare.jpg" alt="Lavarropas Next 9kg" class="img-fluid"></a></td>
+                      <td><a href="#">Lavarropas Next 9kg</a></td>
                       <td>1</td>
                       <td>$200.00</td>
                       <td>$0.00</td>
@@ -354,15 +352,15 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th colspan="5" class="text-right">Order subtotal</th>
+                      <th colspan="5" class="text-right">Subtotal</th>
                       <th>$446.00</th>
                     </tr>
                     <tr>
-                      <th colspan="5" class="text-right">Shipping and handling</th>
+                      <th colspan="5" class="text-right">Envío y Entrega</th>
                       <th>$10.00</th>
                     </tr>
                     <tr>
-                      <th colspan="5" class="text-right">Tax</th>
+                      <th colspan="5" class="text-right">Impuestos</th>
                       <th>$0.00</th>
                     </tr>
                     <tr>
@@ -374,12 +372,12 @@
               </div>
               <div class="row addresses">
                 <div class="col-md-6 text-right">
-                  <h3 class="text-uppercase">Invoice address</h3>
-                  <p>John Brown<br> 13/25 New Avenue<br> New Heaven<br> 45Y 73J<br> England<br> Great Britain</p>
+                  <h3 class="text-uppercase">Direccion de pago</h3>
+                  <p>Martin Pacheco<br> Avenida corrientes<br> 2033 8 B<br> CABA<br> Argentina</p>
                 </div>
                 <div class="col-md-6 text-right">
-                  <h3 class="text-uppercase">Shipping address</h3>
-                  <p>John Brown<br> 13/25 New Avenue<br> New Heaven<br> 45Y 73J<br> England<br> Great Britain</p>
+                  <h3 class="text-uppercase">Direccion de entrega</h3>
+                  <p>Martin Pacheco<br> Avenida corrientes<br> 2033 8 B<br> CABA<br> Argentina</p>
                 </div>
               </div>
             </div>
@@ -388,14 +386,14 @@
             <!-- CUSTOMER MENU -->
             <div class="panel panel-default sidebar-menu">
               <div class="panel-heading">
-                <h3 class="h4 panel-title">Customer section</h3>
+                <h3 class="h4 panel-title">Secciones</h3>
               </div>
               <div class="panel-body">
                 <ul class="nav nav-pills flex-column text-sm">
-                  <li class="nav-item"><a href="customer-orders.html" class="nav-link active"><i class="fa fa-list"></i> My orders</a></li>
-                  <li class="nav-item"><a href="customer-wishlist.html" class="nav-link"><i class="fa fa-heart"></i> My wishlist</a></li>
-                  <li class="nav-item"><a href="customer-account.html" class="nav-link"><i class="fa fa-user"></i> My account</a></li>
-                  <li class="nav-item"><a href="index.html" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></li>
+                  <li class="nav-item"><a href="customer-orders.html" class="nav-link active"><i class="fa fa-list"></i> Mis Pedidos</a></li>
+                  <li class="nav-item"><a href="customer-wishlist.html" class="nav-link"><i class="fa fa-heart"></i> Mi Wishlist</a></li>
+                  <li class="nav-item"><a href="customer-account.html" class="nav-link"><i class="fa fa-user"></i> Mi Cuenta</a></li>
+                  <li class="nav-item"><a href="index.html" class="nav-link"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
                 </ul>
               </div>
             </div>
@@ -404,6 +402,7 @@
       </div>
     </div>
     <!-- GET IT-->
+	<!--
     <div class="get-it">
       <div class="container">
         <div class="row">
@@ -414,15 +413,16 @@
         </div>
       </div>
     </div>
+	-->
     <!-- FOOTER -->
     <footer class="main-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
-            <h4 class="h6">About Us</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <h4 class="h6">Acerca de nosotros</h4>
+            <p>Nos encargamos de entregar los mejores productos a la alcanze de la mano.</p>
             <hr>
-            <h4 class="h6">Join Our Monthly Newsletter</h4>
+            <h4 class="h6">Recibi las ultimas novedades</h4>
             <form>
               <div class="input-group">
                 <input type="text" class="form-control">
@@ -433,7 +433,8 @@
             </form>
             <hr class="d-block d-lg-none">
           </div>
-          <div class="col-lg-3">
+		<!--	
+          <div class="col-lg-3" >
             <h4 class="h6">Blog</h4>
             <ul class="list-unstyled footer-blog-list">
               <li class="d-flex align-items-center">
@@ -442,28 +443,18 @@
                   <h5 class="mb-0"> <a href="post.html">Blog post name</a></h5>
                 </div>
               </li>
-              <li class="d-flex align-items-center">
-                <div class="image"><img src="img/detailsquare.jpg" alt="..." class="img-fluid"></div>
-                <div class="text">
-                  <h5 class="mb-0"> <a href="post.html">Blog post name</a></h5>
-                </div>
-              </li>
-              <li class="d-flex align-items-center">
-                <div class="image"><img src="img/detailsquare.jpg" alt="..." class="img-fluid"></div>
-                <div class="text">
-                  <h5 class="mb-0"> <a href="post.html">Very very long blog post name</a></h5>
-                </div>
-              </li>
             </ul>
             <hr class="d-block d-lg-none">
           </div>
+	-->
+
           <div class="col-lg-3">
-            <h4 class="h6">Contact</h4>
-            <p class="text-uppercase"><strong>Universal Ltd.</strong><br>13/25 New Avenue <br>Newtown upon River <br>45Y 73J <br>England <br><strong>Great Britain</strong></p>
-            <a
-              href="contact.html" class="btn btn-template-main">Go to contact page</a>
-              <hr class="d-block d-lg-none">
+            <h4 class="h6">Contacto</h4>
+            <p class="text-uppercase"><strong>Casa Central.</strong><br>Bartolome Mitre <br> 750 <br> Provincia de Buenos Aires <br><strong>Argentina - Avellaneda</strong></p>
+            <a href="contact.html" class="btn btn-template-main">Pagina de contacto</a>
+            <hr class="d-block d-lg-none">
           </div>
+	<!--
           <div class="col-lg-3">
             <ul class="list-inline photo-stream">
               <li class="list-inline-item"><a href="#"><img src="img/detailsquare.jpg" alt="..." class="img-fluid"></a></li>
@@ -474,17 +465,14 @@
               <li class="list-inline-item"><a href="#"><img src="img/detailsquare.jpg" alt="..." class="img-fluid"></a></li>
             </ul>
           </div>
+	-->
         </div>
       </div>
       <div class="copyrights">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 text-center-md">
-              <p>&copy; 2018. Your company / name goes here</p>
-            </div>
-            <div class="col-lg-8 text-right text-center-md">
-              <p>Template design by <a href="https://bootstrapious.com/free-templates">Bootstrapious Templates </a></p>
-              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+              <p>&copy; 2018. e-commerce</p>
             </div>
           </div>
         </div>

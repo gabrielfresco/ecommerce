@@ -96,7 +96,7 @@ p.lead {
 }
 
 .bar {
-  padding: 60px 0;
+  padding: 60px 0 80px;
 }
 
 .bar.padding-big {
@@ -834,11 +834,10 @@ header.nav-holder.sticky {
 }
 
 .btn-template-main {
-  background: #4fbfa8;
-  border: 1px solid #4fbfa8 !important;
+  border-radius: 4px !important;
+  background: #fbd54a;
+  border: 1px solid #caa932 !important;
   color: #fff !important;
-  border-radius: 0 !important;
-  text-decoration: none;
 }
 
 .btn-template-main:hover, .btn-template-main:focus {
@@ -1993,7 +1992,8 @@ table tr td {
 }
 
 .nav-pills .nav-link:hover {
-  background: #eee;
+  color: #141414;
+  background: transparent;
 }
 
 .nav-pills .nav-link.active {
@@ -2005,9 +2005,14 @@ table tr td {
 }
 
 .category-menu a.nav-link {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 12px;
+  line-height: 1.25;
+  color: #4a4a4a;
+  letter-spacing: 0;
+  padding: 10px 0px;
 }
 
 ul ul a.nav-link {
@@ -2115,15 +2120,15 @@ ul ul a.nav-link {
 }
 
 .get-it {
-  background: #4fbfa8;
+  background: #fad149;
   color: #fff;
   padding: 50px 0;
 }
 
 .get-it h3 {
   text-transform: uppercase;
-  letter-spacing: 0.1em;
   margin: 0;
+  color: #1e1e1f;
 }
 
 footer.main-footer {
