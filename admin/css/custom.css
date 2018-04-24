@@ -1,1 +1,16 @@
-/* your styles go here */
+.full-w .carousel-caption {
+    top: 35%;
+        position: absolute;
+        right: 15%;
+        bottom: 20px;
+        left: 15%;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+    }
+.box-category{
+    background: #f0f0f0;
+    padding: 20px;
+}

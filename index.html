@@ -22,6 +22,7 @@
   <!-- theme stylesheet-->
   <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
   <!-- Custom stylesheet - for your changes-->
+  <link href="css/full-slider.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
   <!-- Favicon and apple touch icons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -46,7 +47,8 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-md-block d-none">
-            <p><a href="#">Sucursales</a></p> <!-- stores.html -->
+            <p><a href="#">Sucursales</a></p>
+            <!-- stores.html -->
           </div>
           <div class="col-md-6">
             <div class="d-flex justify-content-md-end justify-content-between">
@@ -91,7 +93,7 @@
             </form>
             <p class="text-center text-muted">No te registraste aún?</p>
             <p class="text-center text-muted"><a href="customer-register.html"><strong>Registrate ahora</strong></a>! Es facil y lo podes hacer en 1 minuto!
-           </p>
+            </p>
           </div>
         </div>
       </div>
@@ -297,117 +299,83 @@
     </header>
     <!-- Navbar End-->
 
-    <section style="background: url('img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
-      <div class="container">
-        <!-- Carousel Start-->
-        <div class="home-carousel">
-          <div class="dark-mask mask-primary"></div>
-          <div class="container">
-            <div class="homepage owl-carousel">
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-5 text-right">
-                    <p><img src="img/logo.png" alt="" class="ml-auto"></p>
-                    <h1>Titulo</h1>
-                    <p>Descripcion</p>
-                  </div>
-                  <div class="col-md-7"><img src="img/template-homepage.png" alt="" class="img-fluid"></div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-7 text-center"><img src="img/template-mac.png" alt="" class="img-fluid"></div>
-                  <div class="col-md-5">
-                    <h2>Titulo</h2>
-                    <ul class="list-unstyled">
-                      <li>Descripcion</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-5 text-right">
-                    <h1>Titulo</h1>
-                    <ul class="list-unstyled">
-                      <li>Descripcion</li>
-                    </ul>
-                  </div>
-                  <div class="col-md-7"><img src="img/template-easy-customize.png" alt="" class="img-fluid"></div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-7"><img src="img/template-easy-code.png" alt="" class="img-fluid"></div>
-                  <div class="col-md-5">
-                    <h1>Titulo</h1>
-                    <ul class="list-unstyled">
-                      <li>Descripcion</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div id="carouselExampleIndicators" class="carousel slide full-w" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner full-w" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('img/bg-1.png')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Los precios mas bajos</h3>
+            <p>TV´S Y HOME THEATERS.</p>
           </div>
         </div>
-        <!-- Carousel End-->
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/bg-2.jpg')">
+          <div class="second carousel-caption d-none d-md-block">
+            <h3>Acero Inoxidable!</h3>
+            <p>Armá tu cocina, nosotros te ayudamos</p>
+          </div>
+        </div>
       </div>
-    </section>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
     <section class="bar background-white">
       <div class="container text-center">
-        <div class="heading text-center">
+        <div class="title-category heading text-center">
           <h2>Categorias Destacadas</h2>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-bath"></i></div>
-              <h3 class="h4">Categoria#1</h3>
-              <p>Descripcion#1</p>
+          <div class="col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+              <img src="img/television.svg" alt="">
+              <h3 class="h4">Leds</h3>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-home"></i></div>
-              <h3 class="h4">Categoria#2</h3>
-              <p>Descripcion#2</p>
+          <div class="col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+                <img src="img/heladera.svg" alt="">
+              <h3 class="h4">Heladeras , freezers y cavas</h3>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-snowflake-o"></i></div>
-              <h3 class="h4">Categoria#3</h3>
-              <p>Descripcion#3</p>
+          <div class="col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+                <img src="img/lavarropa.svg" alt="">
+              <h3 class="h4">Lavarropas y lavasecarropas</h3>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-bicycle"></i></div>
-              <h3 class="h4">Categoria#4</h3>
-              <p>Descripcion#4</p>
+          <div class="col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+                <img src="img/ventilador.svg" alt="">
+              <h3 class="h4">Aires y Ventiladores</h3>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-child"></i></div>
-              <h3 class="h4">Categoria#4</h3>
-              <p>Descripcion#4</p>
+          <div class=" col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+                <img src="img/cocina.svg" alt="">
+              <h3 class="h4">Electrodomésticos para la cocina</h3>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="box-simple">
-              <div class="icon-outlined"><i class="fa fa-mobile-phone"></i></div>
-              <h3 class="h4">Categoria#5</h3>
-              <p>Descripcion#5</p>
+          <div class="col-lg-2 col-md-6">
+            <div class="box-category box-simple">
+                <img src="img/muebles.svg" alt="">
+              <h3 class="h4">Muebles</h3>
             </div>
           </div>
         </div>
       </div>
     </section>
-        <!-- Carousel Start-->
-	<!--
+    <!-- Carousel Start-->
+    <!--
     <section class="bar background-pentagon no-mb text-md-center">
       <div class="container">
         <div class="heading text-center">
@@ -519,7 +487,7 @@
       </div>
     </section>
 	-->
-        <!-- Carousel End-->
+    <!-- Carousel End-->
     <section style="background: url(img/fixed-background-2.jpg) center top no-repeat; background-size: cover;" class="bar no-mb color-white text-center bg-fixed relative-positioned">
       <div class="dark-mask"></div>
       <div class="container">
@@ -529,7 +497,7 @@
         <p class="text-center"><a href="#" class="btn btn-template-outlined-white btn-lg">Visitar</a></p>
       </div>
     </section>
-<!--
+    <!--
     <section class="bg-white bar">
       <div class="container">
         <div class="heading text-center">
@@ -595,7 +563,7 @@
       </div>
     </section>
 	-->
-	<!--
+    <!--
     <section class="bar bg-gray">
       <div class="container">
         <div class="heading text-center">
@@ -613,7 +581,7 @@
     </section>
 	-->
     <!-- GET IT-->
-	<!--
+    <!--
     <div class="get-it">
       <div class="container">
         <div class="row">
@@ -644,7 +612,7 @@
             </form>
             <hr class="d-block d-lg-none">
           </div>
-		<!--	
+          <!--	
           <div class="col-lg-3" >
             <h4 class="h6">Blog</h4>
             <ul class="list-unstyled footer-blog-list">
@@ -665,7 +633,7 @@
             <a href="contact.html" class="btn btn-template-main">Pagina de contacto</a>
             <hr class="d-block d-lg-none">
           </div>
-	<!--
+          <!--
           <div class="col-lg-3">
             <ul class="list-inline photo-stream">
               <li class="list-inline-item"><a href="#"><img src="img/detailsquare.jpg" alt="..." class="img-fluid"></a></li>
@@ -689,28 +657,24 @@
         </div>
       </div>
     </footer>
-  </div>
-  <!-- Javascript files-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/popper.js/umd/popper.min.js">
-
-  </script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="vendor/jquery.cookie/jquery.cookie.js">
-
-  </script>
-  <script src="vendor/waypoints/lib/jquery.waypoints.min.js">
-
-  </script>
-  <script src="vendor/jquery.counterup/jquery.counterup.min.js">
-
-  </script>
-  <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
-  <script src="js/jquery.parallax-1.1.3.js"></script>
-  <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-  <script src="vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
-  <script src="js/front.js"></script>
+    </div>
+    <!-- Javascript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper.js/umd/popper.min.js">
+    </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js">
+    </script>
+    <script src="vendor/waypoints/lib/jquery.waypoints.min.js">
+    </script>
+    <script src="vendor/jquery.counterup/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
+    <script src="js/front.js"></script>
 </body>
 
 </html>
