@@ -81,23 +81,23 @@
          
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Productos </a>
             <ul id="dashvariants" class="collapse list-unstyled">
-              <li><a href="loadProducts.html">Cargar Productos</a></li>
-              <li><a href="listProducts.html">Listar Productos</a></li>
+                <li><a href="loadProducts.html">Cargar Productos</a></li>
+                <li><a href="listProducts.html">Listar Productos</a></li>
             </ul>
           </li>
           
           <li> <a href="users.html"> <i class="fa fa-user"></i>Usuarios</a></li>
           <li>  <a href="statistics.html"> <i class="fa fa-bar-chart"></i>Estadisticas</a></li>
-          <li class="active"> <a href="#"> <i class="icon-padnote"></i>Sucursales</a></li>
+          <li> <a href="stores.html"> <i class="icon-padnote"></i>Sucursales</a></li>
           <li> <a href="orders.html"> <i class="icon-writing-whiteboard"></i>Pedidos</a></li>
-          <li> <a href="login.html"> <i class="fa fa-window-maximize"></i>Cupones y descuentos</a></li>
+          <li class="active"> <a href="#"> <i class="fa fa-window-maximize"></i>Cupones y descuentos</a></li>
         </ul>
         
       </nav>
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Sucursales</h2>
+            <h2 class="h5 no-margin-bottom">Cupones</h2>
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">
@@ -105,32 +105,28 @@
             <div class="row">
                     <div class="col-lg-6">
                             <div class="block">
-                              <div class="title"><strong class="d-block">Nueva Sucursal</strong><span class="d-block"></span></div>
+                              <div class="title"><strong class="d-block">Nuevo Cupon</strong><span class="d-block"></span></div>
                               <div class="block-body">
                                 <form>
                                   <div class="form-group">
-                                    <label class="form-control-label">Nombre de sucursal</label>
+                                    <label class="form-control-label">Nombre del cupon</label>
                                     <input type="text" placeholder="Nombre" class="form-control">
                                   </div>
                                   <div class="form-group">       
-                                    <label class="form-control-label">Direccion</label>
-                                    <input type="text" placeholder="Direccion" class="form-control">
+                                    <label class="form-control-label">Fecha Inicio</label>
+                                    <input type="date" placeholder="Fecha Inicio" class="form-control">
                                   </div>
                                   <div class="form-group">       
-                                        <label class="form-control-label">Codigo Postal</label>
-                                        <input type="text" placeholder="Codigo Postal" class="form-control">
+                                        <label class="form-control-label">Fecha Final</label>
+                                        <input type="date" placeholder="Fecha Final" class="form-control">
                                     </div>
                                       <div class="form-group">       
-                                            <label class="form-control-label">Telefono</label>
-                                            <input type="text" placeholder="Telefono" class="form-control">
+                                            <label class="form-control-label">Codigo</label>
+                                            <input type="text" placeholder="Codigo" class="form-control">
                                     </div>
                                     <div class="form-group">       
-                                            <label class="form-control-label">Disponibilidad Horaria</label>
-                                            <input type="text" placeholder="De L a V de 14 a 18" class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                            <label class="form-control-label">Email</label>
-                                            <input type="email" placeholder="Email" class="form-control">
+                                            <label class="form-control-label">Descuento</label>
+                                            <input type="text" placeholder="2348dfasd" class="form-control">
                                     </div>
                                   <div class="form-group">       
                                     <input type="submit" value="Agregar" class="btn btn-primary">
@@ -141,51 +137,50 @@
                           </div>
                           <div class="col">
                                 <div class="block margin-bottom-sm">
-                                  <div class="title"><strong>Lista de Sucursales</strong></div>
+                                  <div class="title"><strong>Lista de Cupones</strong></div>
                                   <table class="table">
                                     <thead>
                                       <tr>
                                         <th>#</th>
                                         <th>Nombre</th>
-                                        <th>Direccion</th>
-                                        <th>Codigo Postal</th>
-                                        <th>Telefono</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Email</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Final</th>
+                                        <th>Codigo</th>
+                                        <th>Descuento</th>
                                         <th>Acciones</th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <tr>
                                         <th scope="row">1</th>
-                                        <td>Balbin</td>
-                                        <td>Avenida balbin 2333</td>
-                                        <td>3234</td>
-                                        <td>4853-2343</td>
-                                        <td>De Lunes a viernes de 10 a 18, sabados de 10 a 13</td>
-                                        <td>sucursalbalbin@electro.com</td>
+                                        
+                                        <td>15 % </td>
+                                        <td>2018-10-01</td>
+                                        <td>2018-11-02</td>
+                                        <td>23423sfsad</td>
+                                        <td>15</td>
                                         <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
                                       </tr>
                                       <tr>
-                                            <th scope="row">1</th>
-                                            <td>Balbin</td>
-                                            <td>Avenida balbin 2333</td>
-                                            <td>3234</td>
-                                            <td>4853-2343</td>
-                                            <td>De Lunes a viernes de 10 a 18, sabados de 10 a 13</td>
-                                            <td>sucursalbalbin@electro.com</td>
-                                            <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
-                                          </tr>
-                                          <tr>
-                                                <th scope="row">1</th>
-                                                <td>Balbin</td>
-                                                <td>Avenida balbin 2333</td>
-                                                <td>3234</td>
-                                                <td>4853-2343</td>
-                                                <td>De Lunes a viernes de 10 a 18, sabados de 10 a 13</td>
-                                                <td>sucursalbalbin@electro.com</td>
-                                                <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
-                                              </tr>
+                                        <th scope="row">2</th>
+                                        
+                                        <td>15 % </td>
+                                        <td>2018-10-01</td>
+                                        <td>2018-11-02</td>
+                                        <td>23423sfsad</td>
+                                        <td>15</td>
+                                        <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">3</th>
+                                        
+                                        <td>15 % </td>
+                                        <td>2018-10-01</td>
+                                        <td>2018-11-02</td>
+                                        <td>23423sfsad</td>
+                                        <td>15</td>
+                                        <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
+                                      </tr>
                                     </tbody>
                                   </table>
                                 </div>
