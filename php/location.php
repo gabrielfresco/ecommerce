@@ -1,6 +1,6 @@
 <?php
 /**
- * Class User
+ * Class Location
  *
  * @package     Myapp
  * @subpackage  User
@@ -23,14 +23,14 @@ require_once("logFiles.php");
 class Location
 {
 
-    private $name;
     private $idLocation;
     private $idCity;
+    private $name;
 
     /**
-     * Find one user by name
+     * Find one location by name
      * 
-     * @param   string  $nombre Nombre del usuario
+     * @param   string  $nombre Nombre de la localidad
      * @return  void
      */
     function findLocationByName($name)
@@ -87,22 +87,23 @@ class Location
     /**
      * Update name by id
      * 
-     * @param   string  $name   Nombre de la localidad del usuario
      * @param   string  $id     Id de la localidad
+     * @param   string  $id     Id de la localidad
+     * @param   string  $name   Nombre de la localidad del usuario
      * @return  boolean
      */   
-    function changeNameById($name,$id)
+    function changeLocationById($name,$idLocation,$idCity)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE location SET name='$name' WHERE idLocation='$id'";
+        $sqlProcedure = "UPDATE location SET name='$name', idCity='$idCity' WHERE idLocation='$idLocation'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el usuario.");
+            new LogFiles(__FUNCTION__,"No puede devolver la localidad.");
         }
         return false;
     }
@@ -118,7 +119,7 @@ class Location
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE location SET idCity='idCity' WHERE idLocation='$idLocation'";
+        $sqlProcedure = "UPDATE location SET idCity='$idCity' WHERE idLocation='$idLocation'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
@@ -131,7 +132,7 @@ class Location
     }
 
     /**
-     * Get id
+     * Get id location
      * @return integer
      */
     function getIdLocation()
@@ -142,13 +143,13 @@ class Location
      * Get Location name
      * @return string
      */
-    function getLocation()
+    function getLocationName()
     {
         return $this->name;
     }
 
     /**
-     * Get id
+     * Get id city
      * @return string
      */
     function getIdCity()
@@ -156,10 +157,4 @@ class Location
         return $this->idCity;
     }
 }
-
-//Test:
-$location = new Location();
-//var_dump($us);
-$location->findLocationByName("Mar del plata");
-echo $location->getUsername();
 ?>
