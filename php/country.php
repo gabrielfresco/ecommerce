@@ -120,18 +120,30 @@ class Country
      * @param   string  $name       Nombre del pais
      * @return  boolean
      */
-    function changeCountryById($idCountry,$name)
+    function changeCountryById($idCountry = null, $name = "")
     {
-        $db = Database::getInstance();
-        $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE country SET name='$name' WHERE idCountry='$idCountry'";
-
-        if($result = $mysqli->query($sqlProcedure))
+        if($idCountry != null)
         {
-            return true;
-        }else{
-            # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No pudo actualizar el pais.");
+            $queryModified = null;
+            // Chequeo que las variables no sean null para ver si hay algo q modificar o no..
+            if($name != "")
+            {
+                $name = "name='".$name."'";
+            }
+
+            $db = Database::getInstance();
+            $mysqli = $db->getConnection(); 
+            $sqlProcedure = "UPDATE country SET $name WHERE idCountry='$idCountry'";
+
+                if($result = $mysqli->query($sqlProcedure))
+                {
+                    return true;
+                }else{
+                    # Devuelvo el nombre de la funcion y texto
+                    new LogFiles(__FUNCTION__,"No pudo actualizar el pais.");
+                }
+            }else{
+                new LogFiles(__FUNCTION__,"El pais debe tener id antes de modificar.");
         }
         return false;
     }

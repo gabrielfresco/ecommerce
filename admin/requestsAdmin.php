@@ -12,6 +12,7 @@ if(isset($_POST))
 {
     if(isset($_POST["request"]) && isset($_POST["action"]))
     {
+        
         $request = $_POST["request"];
         $action = $_POST["action"];
         switch ($request)
@@ -49,8 +50,12 @@ function countryEliminar()
     {
         $codigo = $_POST["codigo"];
         $pais = new Country();
-        $pais->removeCountryById($codigo);
-        echo "Ha eliminado el pais satisfactoriamente!";
+        if($pais->removeCountryById($codigo) == true)
+        {
+            echo "Ha eliminado el pais satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
     }
 }
 
@@ -61,34 +66,67 @@ function countryInsertar()
         $id = $_POST["codigo"];
         $name = $_POST["nombre"];
         $pais = new Country();
-        $pais->insertCountry($id,$name);
-        echo "Ha insertado el pais satisfactoriamente!";
+        if($pais->insertCountry($id,$name) == true)
+        {
+            echo "Ha insertado el pais satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
     }
 }
 
 function countryModificar()
 {
     
+    if(isset($_POST["codigo"]) && isset($_POST["field"]) && isset($_POST["value"]))
+    {
+        
+        $id = $_POST["codigo"];
+        $field_name = $_POST["field"];
+
+        // Queda horrible..pero no se me ocurre otra cosa ahora.
+        if($field_name == "name")
+        {
+            $name = $_POST["value"];
+        }else{
+            $name = "";
+        }
+        if($field_name == "othervar")
+        {
+            $othervar = $_POST["value"]; 
+        }else{
+            $othervar = "";
+        }
+
+        $pais = new Country();
+        if($pais->changeCountryById($id,$name) == true)
+        {
+            echo "Ha modificado el pais satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
 }
 
 function countryListar()
 {
-
     $pais = new Country();
     return $pais->getListOfCountries();
 
 }
 
+/*
 function countryFind()
 {
     if(isset($_POST["id"]))
     {
-        $if = $_POST["id"];
+        $id = $_POST["id"];
         $pais = new Country();
         $pais->findCountryById($id);
         return $pais;
     }
     return null;
 }
+*/
 
 ?>
