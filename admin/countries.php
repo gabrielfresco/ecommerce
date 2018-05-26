@@ -1,3 +1,7 @@
+<?php
+  include("requestsAdmin.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -144,28 +148,27 @@
                                         <th>Acciones</th>
                                     </thead>
                                     <tbody>
-                                      <tr>
+                                    <?php
+                            
+                                      $paises = countryListar();
+                                      foreach ($paises as $pais)
+                                      {
+                                    ?>
+                                        <tr>
                                         <th scope="row">1</th>
-                                        <td>Venezuela</td>
-                                        <td>32</td>
-                                        <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Venezuela</td>
-                                        <td>32</td>
-                                        <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Venezuela</td>
-                                        <td>32</td>
-                                        <td><input type="submit" value="Modificar" class="btn btn-primary"><input type="submit" value="Eliminar" class="btn btn-primary"></td>
-                                      </tr>
+                                        <td><?php echo $pais["idCountry"]; ?></td>
+                                        <td><?php echo $pais["name"]; ?></td>
+                                        <td><input type="submit" value="Modificar" onclick="modificarCountry(<?php echo $pais["idCountry"]; ?>)"class="btn btn-primary"><input type="submit" value="Eliminar" onclick="eliminarCountry(<?php echo $pais["idCountry"]; ?>)" class="btn btn-primary"></td>
+                                        </tr>
+                                    <?php
+                                      }
+                                    ?>
                                     </tbody>
                                   </table>
+                                  <div id="messageListar"></div>
                                 </div>
                               </div>
+
             </div>
             </div>
         </section>

@@ -21,9 +21,18 @@ require_once("logFiles.php");
 
 class Country
 {
-
+/*
     private $idCountry;
     private $name;
+*/
+    public $idCountry;
+    public $name;
+
+    function __construct($idCountry = null, $name = null)
+    {
+        $this->idCountry = $idCountry;
+        $this->name = $name;
+    }
 
 
     /**
@@ -125,6 +134,58 @@ class Country
             new LogFiles(__FUNCTION__,"No pudo actualizar el pais.");
         }
         return false;
+    }
+
+
+    /**
+     * Remove country by id
+     * 
+     * @param   integer $idCountry  Id del pais
+     * @param   string  $name       Nombre del pais
+     * @return  boolean
+     */
+    function removeCountryById($idCountry)
+    {
+        $db = Database::getInstance();
+        $mysqli = $db->getConnection(); 
+        $sqlProcedure = "DELETE FROM country WHERE idCountry='$idCountry'";
+
+        if($result = $mysqli->query($sqlProcedure))
+        {
+            return true;
+        }else{
+            # Devuelvo el nombre de la funcion y texto
+            new LogFiles(__FUNCTION__,"No pudo eliminar el pais.");
+        }
+        return false;
+    }
+
+     /**
+     * List of countries
+     * 
+     * @return  array(Country)
+     */
+    function getListOfCountries()
+    {
+        $db = Database::getInstance();
+        $mysqli = $db->getConnection(); 
+        $sqlProcedure = "SELECT * FROM country";
+
+        if($result = $mysqli->query($sqlProcedure))
+        {
+                $listaCountries = array();
+                while ($row = $result->fetch_assoc())
+                {
+                    $listaCountries[] = $row;
+                }
+                return $listaCountries;
+
+        }else{
+            # Devuelvo el nombre de la funcion y texto
+            new LogFiles(__FUNCTION__,"No puede devolver todos los paises.");
+            header(ERROR_404);
+        }
+        return null;
     }
 
     /**

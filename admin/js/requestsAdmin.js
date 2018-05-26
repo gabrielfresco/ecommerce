@@ -31,3 +31,30 @@ function insertCountry()
         }
     });
 }
+
+function eliminarCountry(codigo)
+{
+    $.ajax
+    ({
+        type: "POST",
+        url: "requestsAdmin.php",
+        data:({
+        request: "country",
+        action: "remove",
+        codigo: codigo
+        //codigo: codigo,
+        //nombre: nombre,
+    }),          
+        cache: false,
+        dataType: "text",
+        success:  function (dato)
+        { 
+            messageBox = document.getElementById('messageListar')
+            if(messageBox)
+            {
+                messageBox.innerHTML = dato;
+            }
+            //alert("");
+        }
+    });
+}

@@ -26,7 +26,10 @@ if(isset($_POST))
                         countryEliminar();
                         break;
                     case "modify";
-                    countryModificar();
+                        countryModificar();
+                        break;
+                    case "view":
+                        countryListar();
                         break;
                 }
                 break;
@@ -42,7 +45,13 @@ if(isset($_POST))
 
 function countryEliminar()
 {
-
+    if(isset($_POST["codigo"]))
+    {
+        $codigo = $_POST["codigo"];
+        $pais = new Country();
+        $pais->removeCountryById($codigo);
+        echo "Ha eliminado el pais satisfactoriamente!";
+    }
 }
 
 function countryInsertar()
@@ -60,6 +69,26 @@ function countryInsertar()
 function countryModificar()
 {
     
+}
+
+function countryListar()
+{
+
+    $pais = new Country();
+    return $pais->getListOfCountries();
+
+}
+
+function countryFind()
+{
+    if(isset($_POST["id"]))
+    {
+        $if = $_POST["id"];
+        $pais = new Country();
+        $pais->findCountryById($id);
+        return $pais;
+    }
+    return null;
 }
 
 ?>
