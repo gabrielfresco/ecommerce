@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Incluir todas las clases llamadas debajo en los switchs
-include_once("../php/country.php");
+include_once(dirname(__FILE__) . "/.." . "/php/country.php");
 
 
 if(isset($_POST))

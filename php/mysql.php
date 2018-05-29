@@ -1,7 +1,7 @@
 <?php
 # Requires
 
-require_once("config.php");
+require_once(dirname(__FILE__) . "/config.php");
 
 /*
 * Mysql database class - only one connection alowed

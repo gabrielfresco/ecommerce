@@ -1,11 +1,12 @@
 <?php
 
-include("requestsAdmin.php");
+include(dirname(__FILE__) . "/.." ."/php/country.php");
 /*
 Test class, la uso para probar metodos y boludeces..
 */
 
-$paises = countryView();
+$countries = new Country();
+$paises = $countries->getListOfCountries();
 var_dump(json_encode($paises));
 /*
 $country = null;

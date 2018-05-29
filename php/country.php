@@ -9,8 +9,8 @@
  * @copyright   Copyright (c) 2016, Rodrigo Martinez
  */
 
-require_once("mysql.php");
-require_once("logFiles.php");
+require_once(dirname(__FILE__) . "/mysql.php");
+require_once(dirname(__FILE__) . "/logFiles.php");
 
 /*
 *

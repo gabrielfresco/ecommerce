@@ -1,5 +1,5 @@
 <?php
-   include("requestsAdmin.php");
+   include(dirname(__FILE__) . "/requestsAdmin.php");
 ?>
 <!DOCTYPE html>
 <html>
