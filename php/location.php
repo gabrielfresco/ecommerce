@@ -9,8 +9,8 @@
  * @copyright   Copyright (c) 2016, Rodrigo Martinez
  */
 
-require_once("mysql.php");
-require_once("logFiles.php");
+require_once(dirname(__FILE__) . "/mysql.php");
+require_once(dirname(__FILE__) . "/logFiles.php");
 
 /*
 *
@@ -19,39 +19,69 @@ require_once("logFiles.php");
 *
 */
 
-
 class Location
 {
+    public $idLocation;
+    public $idCity;
+    public $name;
 
-    private $idLocation;
-    private $idCity;
-    private $name;
+    function __construct($idLocation = null, $idCity = null, $name = null)
+    {
+        $this->idLocation = $idLocation;
+        $this->idCity = $idCity;
+        $this->name = $name;
+    }
+
 
     /**
-     * Find one location by name
+     * Insert one location
+     * 
+     * @param   integer $idCity     Id de la ciudad
+     * @param   string  $name       Nombre de la localidad
+     * @return  boolean
+     */
+    function insertLocation($idCity,$name)
+    {
+        $db = Database::getInstance();
+        $mysqli = $db->getConnection(); 
+        $sqlProcedure = "INSERT INTO location (idCity,name) VALUES ('$idCity','$name')";
+
+        if($result = $mysqli->query($sqlProcedure))
+        {
+            $this->idLocation = $mysqli->insert_id;
+            return true;
+        }else{
+            # Devuelvo el nombre de la funcion y texto
+            new LogFiles(__FUNCTION__,"No pudo insertar la localidad.");
+        }
+        return false;
+    }
+
+    /**
+     * Find location by name
      * 
      * @param   string  $nombre Nombre de la localidad
      * @return  void
      */
-    function findLocationByName($name)
+    function findLocationByName($nombre)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM location WHERE name='$name' LIMIT 1";
-
+        $sqlProcedure = "SELECT * FROM location WHERE name='$nombre' LIMIT 1";
+        
         if($result = $mysqli->query($sqlProcedure))
         {
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            if(count($row) > 0)
+            
+            if(mysqli_num_rows($result) > 0)
             {
-                
+                $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idLocation = $row["idLocation"];
                 $this->idCity = $row["idCity"];
                 $this->name = $row["name"];
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el nombre de localidad.");
+            new LogFiles(__FUNCTION__,"No puede devolver la localidad");
             header(ERROR_404);
         }
     }
@@ -59,7 +89,7 @@ class Location
      /**
      * Find one location by id
      * 
-     * @param   integer $id ID de la localidad
+     * @param   integer $id ID de la location
      * @return  void
      */
     function findLocationById($id)
@@ -70,7 +100,8 @@ class Location
 
         if($result = $mysqli->query($sqlProcedure))
         {
-            if(count($row) > 0)
+            
+            if(mysqli_num_rows($result) > 0)
             {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idLocation = $row["idLocation"];
@@ -79,82 +110,108 @@ class Location
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver la localidad.");
+            new LogFiles(__FUNCTION__,"No puede devolver la localidad");
             header(ERROR_404);
         }
     }
 
-    /**
-     * Update name by id
+     /**
+     * Update location by idLocation
      * 
-     * @param   string  $id     Id de la localidad
-     * @param   string  $id     Id de la localidad
-     * @param   string  $name   Nombre de la localidad del usuario
+     * @param   integer $idLocation     Id de la localidad
+     * @param   integer $idCity  Id de la ciudad
+     * @param   string  $name       Nombre de la localidad
      * @return  boolean
-     */   
-    function changeLocationById($name,$idLocation,$idCity)
+     */
+    function changeLocationById($idLocation = null, $idCity = null, $name = "")
+    {
+        if($idLocation != null)
+        {
+            $queryModified = null;
+            // Chequeo que las variables no sean null para ver si hay algo q modificar o no..
+            if($name != "")
+            {
+                $queryModified .= "name='".$name."',";
+            }
+
+            if($idCity != null)
+            {
+                $queryModified .= "idCity='".$idCity."',";
+            }
+
+            $queryModified = rtrim($queryModified,",");
+            if($queryModified != null)
+            {
+                $db = Database::getInstance();
+                $mysqli = $db->getConnection();
+                
+                $sqlProcedure = "UPDATE location SET $queryModified WHERE idLocation='$idLocation'";
+                var_dump($sqlProcedure);
+                    if($result = $mysqli->query($sqlProcedure))
+                    {
+                        return true;
+                    }else{
+                        # Devuelvo el nombre de la funcion y texto
+                        new LogFiles(__FUNCTION__,"No pudo actualizar la localidad.");
+                    }
+            }else{
+                new LogFiles(__FUNCTION__,"No pudo actualizar la localidad porque no llegaron valores.");
+            }
+        }else{
+            new LogFiles(__FUNCTION__,"La localidad debe tener id antes de modificar.");
+        }
+        return false;
+    }
+
+
+    /**
+     * Remove location by id
+     * 
+     * @param   integer $idLocation     Id de la localidad
+     * @return  boolean
+     */
+    function removeLocationById($idLocation)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE location SET name='$name', idCity='$idCity' WHERE idLocation='$idLocation'";
+        $sqlProcedure = "DELETE FROM location WHERE idLocation='$idLocation'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver la localidad.");
+            new LogFiles(__FUNCTION__,"No pudo eliminar la localidad.");
         }
         return false;
     }
 
-    /**
-     * Update idLocation by id
+     /**
+     * List of cities
      * 
-     * @param   string  $idLocation Id de la localidad
-     * @param   string  $idCity     Id de la ciudad
-     * @return  boolean
+     * @return  array(Location)
      */
-    function changeIdCityByIdLocation($idLocation,$idCity)
+    function getListOfLocations()
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE location SET idCity='$idCity' WHERE idLocation='$idLocation'";
+        $sqlProcedure = "SELECT * FROM location";
 
         if($result = $mysqli->query($sqlProcedure))
         {
-            return true;
+                $listaLocations = array();
+                while ($row = $result->fetch_assoc())
+                {
+                    $listaLocations[] = $row;
+                }
+                return $listaLocations;
+
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el usuario.");
+            new LogFiles(__FUNCTION__,"No puede devolver todos las localidades");
+            header(ERROR_404);
         }
-        return false;
-    }
-
-    /**
-     * Get id location
-     * @return integer
-     */
-    function getIdLocation()
-    {
-        return $this->idLocation;
-    }
-    /**
-     * Get Location name
-     * @return string
-     */
-    function getLocationName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get id city
-     * @return string
-     */
-    function getIdCity()
-    {
-        return $this->idCity;
+        return null;
     }
 }
 ?>

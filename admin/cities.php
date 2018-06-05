@@ -1,0 +1,229 @@
+<?php
+   include(dirname(__FILE__) . "/requestsAdmin.php");
+?>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Panel de Administrador - eCommerce</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="robots" content="all,follow">
+      <!-- Bootstrap CSS-->
+      <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+      <!-- Font Awesome CSS-->
+      <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+      <!-- Custom Font Icons CSS-->
+      <link rel="stylesheet" href="css/font.css">
+      <!-- Google fonts - Muli-->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+      <!-- theme stylesheet-->
+      <link rel="stylesheet" href="css/style.pink.css" id="theme-stylesheet">
+      <!-- Custom stylesheet - for your changes-->
+      <link rel="stylesheet" href="css/custom.css">
+      <!-- Favicon-->
+      <link rel="shortcut icon" href="img/favicon.ico">
+      <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <body>
+      <header class="header">
+         <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+               <div class="navbar-header">
+                  <a href="index.html" class="navbar-brand">
+                     <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Panel</strong><strong>Admininistrador</strong></div>
+                     <div class="brand-text brand-sm"><strong class="text-primary">A</strong><strong>D</strong><strong class="text-primary">M</strong></div>
+                  </a>
+                  <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+               </div>
+               <ul class="right-menu list-inline no-margin-bottom">
+                  <!--<li class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></li>-->
+                  <li class="list-inline-item dropdown">
+                     <a id="navbarDropdownMenuLink1" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email"></i><span class="badge dashbg-1">5</span></a>
+                     <ul aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu messages">
+                        <li>
+                           <a href="#" class="dropdown-item message d-flex align-items-center">
+                              <div class="profile">
+                                 <img src="img/avatar-3.jpg" alt="..." class="img-fluid">
+                                 <div class="status online"></div>
+                              </div>
+                              <div class="content">   <strong class="d-block">Notificacion 1</strong><span class="d-block">descripcion</span><small class="date d-block">9:30am</small></div>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" class="dropdown-item message d-flex align-items-center">
+                              <div class="profile">
+                                 <img src="img/avatar-2.jpg" alt="..." class="img-fluid">
+                                 <div class="status away"></div>
+                              </div>
+                              <div class="content">   <strong class="d-block">Notificacion 2</strong><span class="d-block">descripcion</span><small class="date d-block">7:40am</small></div>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" class="dropdown-item message d-flex align-items-center">
+                              <div class="profile">
+                                 <img src="img/avatar-1.jpg" alt="..." class="img-fluid">
+                                 <div class="status busy"></div>
+                              </div>
+                              <div class="content">   <strong class="d-block">Notificacion 3</strong><span class="d-block">descripcion</span><small class="date d-block">6:55am</small></div>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" class="dropdown-item message d-flex align-items-center">
+                              <div class="profile">
+                                 <img src="img/avatar-5.jpg" alt="..." class="img-fluid">
+                                 <div class="status offline"></div>
+                              </div>
+                              <div class="content">   <strong class="d-block">Notificacion 4</strong><span class="d-block">descripcion</span><small class="date d-block">10:30pm</small></div>
+                           </a>
+                        </li>
+                        <li><a href="#" class="dropdown-item text-center message"> <strong>Ver todas las notificaciones <i class="fa fa-angle-right"></i></strong></a></li>
+                     </ul>
+                  </li>
+                  <li class="list-inline-item logout">                   <a id="logout" href="login.html" class="nav-link">Cerrar Sesion <i class="icon-logout"></i></a></li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+      <div class="d-flex align-items-stretch">
+         <nav id="sidebar">
+            <div class="sidebar-header d-flex align-items-center">
+               <div class="avatar"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
+               <div class="title">
+                  <h1 class="h5">Fernando Rodriguez</h1>
+                  <p>Gerente</p>
+               </div>
+            </div>
+            <span class="heading">MENU</span>
+            <ul class="list-unstyled">
+               <li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
+               <li>
+                  <a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Productos </a>
+                  <ul id="dashvariants" class="collapse list-unstyled">
+                     <li><a href="#">Cargar Productos</a></li>
+                     <li><a href="#">Listar Productos</a></li>
+                  </ul>
+               </li>
+               <li> <a href="users.php"> <i class="fa fa-user"></i>Usuarios</a></li>
+               <li>  <a href="statistics.php"> <i class="fa fa-bar-chart"></i>Estadisticas</a></li>
+               <li class="active"> <a href="#"> <i class="icon-padnote"></i>Sucursales</a></li>
+               <li> <a href="login.php"> <i class="icon-writing-whiteboard"></i>Pedidos</a></li>
+               <li> <a href="login.php"> <i class="fa fa-window-maximize"></i>Cupones y descuentos</a></li>
+               <li>
+                  <a href="#dashsite" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-university"></i>Sitio</a>
+                  <ul id="dashsite" class="collapse list-unstyled">
+                     <li><a href="#">Cargar/Ver Paises</a></li>
+                     <li><a href="cities.php">Cargar/Ver Ciudades</a></li>
+                     <li><a href="locations.php">Cargar/Ver Localidades</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div class="page-content">
+            <div class="page-header">
+               <div class="container-fluid">
+                  <h2 class="h5 no-margin-bottom">Sitio</h2>
+               </div>
+            </div>
+            <section class="no-padding-top no-padding-bottom">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col">
+                        <div class="block">
+                           <div class="title"><strong class="d-block">Nueva Ciudad</strong><span class="d-block"></span></div>
+                           <div class="block-body">
+                              <div class="form-group">
+                                 <label class="form-control-label">Nombre de la ciudad</label>
+                                 <input type="text" id="nombre" placeholder="Ciudad" class="form-control">
+                              </div>
+                              <div class="form-group">     
+                              <label class="form-control-label">Pais</label>  
+                                 <select class="form-control" id="codigoCountry">
+                                <?php
+                                    $paises = countryListar();
+                                    foreach ($paises as $pais)
+                                    {
+                                ?>
+                                 <option value="<?php echo $pais["idCountry"];?>"><?php echo $pais["name"]; ?></option>
+                                    <?php } ?>
+                                 </select>
+                              </div>
+                              <div class="form-group">       
+                                 <input type="submit" value="Agregar" onclick="insertCity()" class="btn btn-primary">
+                              </div>
+                              <div class="form-group">
+                                 <div id="message"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="table-cities">
+                        <div class="col">
+                           <div class="block margin-bottom-sm">
+                              <div class="title"><strong>Lista de ciudades</strong></div>
+                              <table class="table">
+                                 <thead>
+                                    <tr>
+                                       <th>#</th>
+                                       <th>Ciudad</th>
+                                       <th>Pais</th>
+                                       <th>Acciones</th>
+                                 </thead>
+                                 <tbody>
+                                    <?php
+                                       $ciudades = cityListar();
+                                       $count = 1;
+                                       foreach ($ciudades as $ciudad)
+                                       {
+                                    ?>
+                                    <tr>
+                                       <th scope="row"><?php echo $count; ?></th>
+                                       <td>
+                                       <div contentEditable='true' class='edit-city' id='name_<?php echo $ciudad["idCity"]; ?>'><?php echo $ciudad["name"]; ?></div>
+                                       </td>
+                                       <td>
+                                          <?php 
+                                          $pais = new Country();
+                                          $pais->findCountryById($ciudad["idCountry"]);
+                                          echo $pais->name;
+                                          ?>
+                                       </td>
+                                       <td><input type="submit" value="Eliminar" onclick="eliminarCity(<?php echo $ciudad["idCity"]; ?>)" class="btn btn-primary"></td>
+                                    </tr>
+                                    <?php
+                                       $count++;
+                                       }
+                                    ?>
+                                 </tbody>
+                              </table>
+                              <div id="messageListar"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <footer class="footer">
+               <div class="footer__block block no-margin-bottom">
+                  <div class="container-fluid text-center">
+                     <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                     <p class="no-margin-bottom">2018 &copy; eCommerce.</p>
+                  </div>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- Javascript files-->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"> </script>
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+      <script src="vendor/chart.js/Chart.min.js"></script>
+      <script src="js/charts-home.js"></script>
+      <script src="js/front.js"></script>
+      <script src="js/requestsAdmin.js"></script>
+   </body>
+</html>

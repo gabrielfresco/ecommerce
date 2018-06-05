@@ -9,45 +9,78 @@
  * @copyright   Copyright (c) 2016, Rodrigo Martinez
  */
 
-require_once("mysql.php");
-require_once("logFiles.php");
+require_once(dirname(__FILE__) . "/mysql.php");
+require_once(dirname(__FILE__) . "/logFiles.php");
 
 /*
 *
-* Clase Address
+* Clase Direccion
 *
 *
 */
 
 class Address
 {
+    public $idAddress;
+    public $idLocation;
+    public $dir;
+    public $postalCode;
 
-    private $idAddress;
-    private $idLocation;
-    private $address1;
-    private $address2;
-    private $postalCode;
+    function __construct($idAddress = null, $idLocation = null, $dir = null, $postalCode = null)
+    {
+        $this->idAddress = $idAddress;
+        $this->idLocation = $idLocation;
+        $this->dir = $dir;
+        $this->postalCode = $postalCode;
+    }
+
     /**
-     * Find addres by name
+     * Insert one address
      * 
-     * @param   string  $nombre Nombre del la direccion
-     * @return  void
+     * @param   integer $idAddress  Id de la direccion
+     * @param   integer $idLocation Id de la localidad
+     * @param   string  $address    Direccion
+     * @param   string  $postalCode    Codigo Postal
+     * @return  boolean
      */
-    function findAddresByName($nombre)
+    function insertAddress($idLocation, $dir, $postalCode)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM address WHERE address1='$nombre' LIMIT 1";
+        $sqlProcedure = "INSERT INTO address (idLocation,dir,postalCode) VALUES ('$idLocation','$dir','$postalCode')";
 
         if($result = $mysqli->query($sqlProcedure))
         {
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            if(count($row) > 0)
+            $this->idAddress = $mysqli->insert_id;
+            return true;
+        }else{
+            # Devuelvo el nombre de la funcion y texto
+            new LogFiles(__FUNCTION__,"No pudo insertar la direccion.");
+        }
+        return false;
+    }
+
+    /**
+     * Find Address by name
+     * 
+     * @param   string  $nombre Direccion
+     * @return  void
+     */
+    function findAddressByName($nombre)
+    {
+        $db = Database::getInstance();
+        $mysqli = $db->getConnection(); 
+        $sqlProcedure = "SELECT * FROM address WHERE dir='$nombre' LIMIT 1";
+        
+        if($result = $mysqli->query($sqlProcedure))
+        {
+            
+            if(mysqli_num_rows($result) > 0)
             {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idAddress = $row["idAddress"];
                 $this->idLocation = $row["idLocation"];
-                $this->address1 = $row["address1"];
-                $this->address2 = $row["address2"];
+                $this->dir = $row["dir"];
                 $this->postalCode = $row["postalCode"];
             }
         }else{
@@ -71,91 +104,122 @@ class Address
 
         if($result = $mysqli->query($sqlProcedure))
         {
-            if(count($row) > 0)
+            if(mysqli_num_rows($result) > 0)
             {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idAddress = $row["idAddress"];
                 $this->idLocation = $row["idLocation"];
-                $this->address1 = $row["address1"];
-                $this->address2 = $row["address2"];
+                $this->dir = $row["dir"];
                 $this->postalCode = $row["postalCode"];
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver la direccion.");
+            new LogFiles(__FUNCTION__,"No puede devolver la direccion");
             header(ERROR_404);
         }
     }
 
-    /**
-     * Update state by id
+     /**
+     * Update Address by idAddress
      * 
-     * @param   integer  $idAddress Id del usuario
-     * @param   integer  $idLocation  Id de la localidad
-     * @param   string  $address1  direccion 1
-     * @param   string  $address2  direccion 2
-     * @param   integer  $postalCode  codigo postal
+     * @param   integer $idAddress      Id de la direccion
+     * @param   integer $idLocation     Id de la localidad
+     * @param   string  $address        Direccion
+     * @param   string  $postalCode     Codigo postal
+     * 
      * @return  boolean
      */
-    function changeAddressById($idAddress,$idLocation,$address1,$address2,$postalCode)
+    /*
+    function changeAddressById($idCity = null, $idCountry = null, $name = "")
+    {
+        if($idCity != null)
+        {
+            $queryModified = null;
+            // Chequeo que las variables no sean null para ver si hay algo q modificar o no..
+            if($name != "")
+            {
+                $queryModified .= "name='".$name."',";
+            }
+
+            if($idCountry != null)
+            {
+                $queryModified .= "idCountry='".$idCountry."',";
+            }
+
+            
+            if($queryModified != null)
+            {
+                $queryModified = rtrim($queryModified,",");
+                $db = Database::getInstance();
+                $mysqli = $db->getConnection();
+                
+                $sqlProcedure = "UPDATE city SET $queryModified WHERE idCity='$idCity'";
+                
+                    if($result = $mysqli->query($sqlProcedure))
+                    {
+                        return true;
+                    }else{
+                        # Devuelvo el nombre de la funcion y texto
+                        new LogFiles(__FUNCTION__,"No pudo actualizar la ciudad.");
+                    }
+            }else{
+                new LogFiles(__FUNCTION__,"No pudo actualizar la ciudad porque no llegaron valores.");
+            }
+        }else{
+            new LogFiles(__FUNCTION__,"La ciudad debe tener id antes de modificar.");
+        }
+        return false;
+    }
+*/
+
+    /**
+     * Remove city by id
+     * 
+     * @param   integer $idAddres     Id de la direccion
+     * @return  boolean
+     */
+    function removeAddressById($idAddress)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE address SET idLocation='$idLocation', address1='$address1', address2='$address2', postalCode='$postalCode' WHERE idAddress='$idAddress'";
+        $sqlProcedure = "DELETE FROM address WHERE idAddress='$idAddress'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No pudo actualizar la direccion.");
+            new LogFiles(__FUNCTION__,"No pudo eliminar la direccion.");
         }
         return false;
     }
 
-    /**
-     * Get id address
-     * @return integer
+     /**
+     * List of cities
+     * 
+     * @return  array(Address)
      */
-    function getIdAddress()
+    function getListOfAddress()
     {
-        return $this->idAddress;
-    }
-    /**
-     * Get id location
-     * @return string
-     */
-    function getIdLocalidad()
-    {
-        return $this->idLocation;
-    }
+        $db = Database::getInstance();
+        $mysqli = $db->getConnection(); 
+        $sqlProcedure = "SELECT * FROM address";
 
-    /**
-     * Get first address
-     * @return string
-     */
-    function getAddress1()
-    {
-        return $this->address1;
-    }
+        if($result = $mysqli->query($sqlProcedure))
+        {
+                $listaCities = array();
+                while ($row = $result->fetch_assoc())
+                {
+                    $listaCities[] = $row;
+                }
+                return $listaCities;
 
-    /**
-     * Get second address
-     * @return string
-     */
-    function getAddress2()
-    {
-        return $this->address2;
-    }
-
-    /**
-     * Get postal code
-     * @return string
-     */
-    function getPostalCode()
-    {
-        return $this->postalCode;
+        }else{
+            # Devuelvo el nombre de la funcion y texto
+            new LogFiles(__FUNCTION__,"No puede devolver todos las Direcciones");
+            header(ERROR_404);
+        }
+        return null;
     }
 }
-
 ?>

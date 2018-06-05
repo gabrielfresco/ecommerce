@@ -50,6 +50,7 @@ class Country
 
         if($result = $mysqli->query($sqlProcedure))
         {
+            $this->idCountry = $mysqli->insert_id;
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
@@ -73,11 +74,13 @@ class Country
         if($result = $mysqli->query($sqlProcedure))
         {
             
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            if(count($row) > 0)
+            if(mysqli_num_rows($result) > 0)
             {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idCountry = $row["idCountry"];
                 $this->name = $row["name"];
+            }else{
+                new LogFiles(__FUNCTION__,"No se encontro el id del pais.");
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
@@ -100,11 +103,13 @@ class Country
 
         if($result = $mysqli->query($sqlProcedure))
         {
-            if(count($row) > 0)
+            if(mysqli_num_rows($result) > 0)
             {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->idCountry = $row["idCountry"];
                 $this->name = $row["name"];
+            }else{
+                new LogFiles(__FUNCTION__,"No se encontro el id del pais.");
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
@@ -124,7 +129,6 @@ class Country
     {
         if($idCountry != null)
         {
-            $queryModified = null;
             // Chequeo que las variables no sean null para ver si hay algo q modificar o no..
             if($name != "")
             {
@@ -153,7 +157,6 @@ class Country
      * Remove country by id
      * 
      * @param   integer $idCountry  Id del pais
-     * @param   string  $name       Nombre del pais
      * @return  boolean
      */
     function removeCountryById($idCountry)
@@ -198,23 +201,6 @@ class Country
             header(ERROR_404);
         }
         return null;
-    }
-
-    /**
-     * Get id country
-     * @return integer
-     */
-    function getIdCountry()
-    {
-        return $this->idCountry;
-    }
-    /**
-     * Get country name
-     * @return string
-     */
-    function getName()
-    {
-        return $this->name;
     }
 }
 ?>

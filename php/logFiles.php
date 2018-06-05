@@ -28,7 +28,7 @@ class LogFiles
     private function saveToFile()
     {
         $createMessage = "[".$this->datetime."] - ".$this->title." -> ".$this->message;
-//        file_put_contents(LOG_FILE, $createMessage. PHP_EOL, FILE_APPEND | LOCK_EX);
+        file_put_contents(LOG_FILE, $createMessage. PHP_EOL, FILE_APPEND | LOCK_EX);
     }
 }
 ?>

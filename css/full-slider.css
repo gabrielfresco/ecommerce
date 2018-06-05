@@ -50,6 +50,13 @@
   cursor: pointer;
   height: 185px;
 }
+.box-stores{
+  border: 1px solid #e5e5e5;
+  background-color: #292929;
+  border-radius: 4px;
+  padding: 20px;
+  cursor: pointer;
+}
 
 .box-category img{
   width: 88px;

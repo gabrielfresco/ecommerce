@@ -4,3 +4,27 @@
 [2018-03-03 00:35:59] - findUserByName -> No puede devolver el usuario.
 [2018-03-03 00:35:59] - findUserByName -> No puede devolver el usuario.
 [2018-03-03 00:35:59] - findUserByName -> No puede devolver el usuario.
+[2018-06-04 18:08:00] - insertCountry -> No pudo insertar el pais.
+[2018-06-04 18:08:01] - insertCountry -> No pudo insertar el pais.
+[2018-06-04 18:08:01] - insertCountry -> No pudo insertar el pais.
+[2018-06-04 18:08:01] - insertCountry -> No pudo insertar el pais.
+[2018-06-04 18:08:01] - insertCountry -> No pudo insertar el pais.
+[2018-06-04 19:12:49] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:14:12] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:19] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:24] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:25] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:26] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:27] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:27] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:28] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:29] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:29] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:15:30] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:16:33] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:17:10] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 19:18:23] - changeCityById -> No pudo actualizar la ciudad porque no llegaron valores.
+[2018-06-04 19:18:47] - changeCityById -> No pudo actualizar la ciudad.
+[2018-06-04 22:19:44] - insertAddress -> No pudo insertar la direccion.
+[2018-06-04 22:26:57] - insertAddress -> No pudo insertar la direccion.
+[2018-06-04 22:27:46] - insertAddress -> No pudo insertar la direccion.
