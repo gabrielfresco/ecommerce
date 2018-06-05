@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 25, 2018 at 07:00 PM
+-- Generation Time: Jun 04, 2018 at 10:56 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.0.27-0+deb9u1
 
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `supervisada`
 --
-DROP DATABASE IF EXISTS `supervisada`;
 CREATE DATABASE IF NOT EXISTS `supervisada` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `supervisada`;
 
@@ -33,10 +32,19 @@ DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
   `idAddress` int(11) NOT NULL,
   `idLocation` int(11) NOT NULL,
-  `address1` varchar(255) NOT NULL,
-  `address2` varchar(255) NOT NULL,
+  `dir` varchar(255) NOT NULL,
   `postalCode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Direcciones de clientes y sucursales';
+
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`idAddress`, `idLocation`, `dir`, `postalCode`) VALUES
+(1, 4, 'Avenida Sarfiel 2043', 4332),
+(2, 3, 'asd', 213),
+(3, 3, 'Av Mitre 650', 4532),
+(4, 3, 'Hipolito Yrigoyen 3232', 4550);
 
 -- --------------------------------------------------------
 
@@ -75,6 +83,13 @@ CREATE TABLE `city` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Ciudades';
 
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`idCity`, `idCountry`, `name`) VALUES
+(6, 54, 'Buenos Aires');
+
 -- --------------------------------------------------------
 
 --
@@ -92,7 +107,6 @@ CREATE TABLE `country` (
 --
 
 INSERT INTO `country` (`idCountry`, `name`) VALUES
-(1, 'Estados Unidos'),
 (54, 'Argentina');
 
 -- --------------------------------------------------------
@@ -165,6 +179,14 @@ CREATE TABLE `location` (
   `idCity` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Localidades';
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`idLocation`, `idCity`, `name`) VALUES
+(3, 6, 'Avellaneda'),
+(4, 6, 'Loma Hermosa');
 
 -- --------------------------------------------------------
 
@@ -265,8 +287,18 @@ CREATE TABLE `store` (
   `idStore` int(11) NOT NULL,
   `idAddress` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `telephone` varchar(255) NOT NULL
+  `telephone` varchar(255) NOT NULL,
+  `available` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Sucursales';
+
+--
+-- Dumping data for table `store`
+--
+
+INSERT INTO `store` (`idStore`, `idAddress`, `name`, `telephone`, `available`, `email`) VALUES
+(3, 3, 'Avellaneda', '47736564', 'De lunes a viernes de 9 a 18hs', 'avellaneda@electro.com'),
+(4, 4, 'Center Avellaneda', '45345123', '24/365', 'central@electro.com.ar');
 
 -- --------------------------------------------------------
 
@@ -417,7 +449,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `idAddress` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAddress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `addressList`
 --
@@ -432,7 +464,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `idCity` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `cupon`
 --
@@ -452,7 +484,7 @@ ALTER TABLE `facture`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `idLocation` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLocation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `order`
 --
@@ -472,7 +504,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `store`
 --
 ALTER TABLE `store`
-  MODIFY `idStore` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idStore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
