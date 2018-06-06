@@ -10,6 +10,8 @@ include_once(dirname(__FILE__) . "/.." . "/php/city.php");
 include_once(dirname(__FILE__) . "/.." . "/php/location.php");
 include_once(dirname(__FILE__) . "/.." . "/php/address.php");
 include_once(dirname(__FILE__) . "/.." . "/php/store.php");
+include_once(dirname(__FILE__) . "/.." . "/php/category.php");
+include_once(dirname(__FILE__) . "/.." . "/php/product.php");
 
 
 if(isset($_POST))
@@ -89,6 +91,24 @@ if(isset($_POST))
                         break;
                     case "view":
                         storeListar();
+                        break;
+                }
+                break;
+
+            case "category":
+                switch ($action)
+                {
+                    case "add":
+                        categoryInsertar();
+                        break;
+                    case "remove":
+                        categoryEliminar();
+                        break;
+                    case "modify";
+                        categoryModificar();
+                        break;
+                    case "view":
+                        categoryListar();
                         break;
                 }
                 break;
@@ -427,6 +447,69 @@ function storeListar()
 }
 
 
+
+/* Categories */
+
+function categoryEliminar()
+{
+    if(isset($_POST["codigoProduct"]))
+    {
+        $codigo = $_POST["codigoProduct"];
+        $product = new Product();
+        if($product->removeProductById($codigo) == true)
+        {
+            echo "Ha eliminado el producto satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
+}
+
+function categoryInsertar()
+{
+
+    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    {
+        $idCategory = $_POST["idCategory"];
+        $name = $_POST["name"];
+        $width = $_POST["width"];
+        $prof = $_POST["prof"];
+        $length = $_POST["length"];
+        $price = $_POST["price"];
+        $warranty = $_POST["warranty"];
+
+        $product = new Product();
+        if($product->insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        {
+            echo "Ha insertado el producto satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
+}
+
+function categoryModificar()
+{
+    
+    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    {
+
+        $product = new Product();
+        if($product->changeProductById($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        {
+            echo "Ha modificado el producto satisfactoriamente!";
+        }else{
+         
+}
+
+function categoryListar()
+{
+    $product = new Product();
+    return $product->getListOfProducts();
+
+}
+
+
 /* Products */
 
 function productEliminar()
@@ -478,11 +561,7 @@ function productModificar()
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{
-            echo "Algo mal ha ocurrido.";
-        }
-    }
-    
-
+         
 }
 
 function productListar()

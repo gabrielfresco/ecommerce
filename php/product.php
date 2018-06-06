@@ -27,18 +27,18 @@ class Product
     public $idCategory;
     public $name;
     public $width;
-    public $height;
+    public $length;
     public $prof;
     public $price;
     public $warranty;
 
-    function __construct($idProduct = null, $idCategory = null, $name = null, $width = null, $height = null, $prof = null, $price = null, $warranty = null)
+    function __construct($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $prof = null, $price = null, $warranty = null)
     {
         $this->idProduct = $idProduct;
         $this->idCategory = $idCategory;
         $this->name = $name;
         $this->width = $width;
-        $this->height = $height;
+        $this->length = $length;
         $this->prof = $prof;
         $this->price = $price;
         $this->warranty = $warranty;
@@ -93,8 +93,8 @@ class Product
                 $this->idProduct = $row["idProduct"];
                 $this->idCategory = $row["idCategory"];
                 $this->name = $row["name"];
-                $this->width = $row["width]"];
-                $this->height = $row["height"];
+                $this->width = $row["width"];
+                $this->length = $row["length"];
                 $this->prof = $row["prof"];
                 $this->price = $row["price"];
                 $this->warranty = $row["warranty"];
@@ -126,8 +126,8 @@ class Product
                 $this->idProduct = $row["idProduct"];
                 $this->idCategory = $row["idCategory"];
                 $this->name = $row["name"];
-                $this->width = $row["width]"];
-                $this->height = $row["height"];
+                $this->width = $row["width"];
+                $this->length = $row["length"];
                 $this->prof = $row["prof"];
                 $this->price = $row["price"];
                 $this->warranty = $row["warranty"];
@@ -152,7 +152,7 @@ class Product
      * @param   string  $warranty       Garantia del producto
      * @return  boolean
      */
-    function changeProductById($idProduct = null, $idCategory = null, $name = null, $width = null, $height = null, $prof = null, $price = null, $warranty = null)
+    function changeProductById($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $prof = null, $price = null, $warranty = null)
     {
         if($idProduct != null)
         {
@@ -173,9 +173,9 @@ class Product
                 $queryModified .= "width='".$width."',";
             }
 
-            if($height!= null)
+            if($length!= null)
             {
-                $queryModified .= "height='".$height."',";
+                $queryModified .= "length='".$length."',";
             }
 
             if($prof!= null)
