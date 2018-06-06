@@ -1,13 +1,14 @@
 <?php
 
-include(dirname(__FILE__) . "/.." ."/php/country.php");
+// include(dirname(__FILE__) . "/.." ."/php/country.php");
+include(dirname(__FILE__) . "/.." ."/php/category.php");
 /*
 Test class, la uso para probar metodos y boludeces..
 */
 
-$countries = new Country();
-$paises = $countries->getListOfCountries();
-var_dump(json_encode($paises));
+// $countries = new Country();
+// $paises = $countries->getListOfCountries();
+// var_dump(json_encode($paises));
 /*
 $country = null;
 foreach ($paises as $pais) {
@@ -34,5 +35,16 @@ foreach ($paises as $key => $value)
 
 var_dump($object->getIdCountry());
 */
+
+
+
+$categoria = new Category(null, null, "categoria1");
+
+if ($categoria->insertCategory($categoria->idCategory, $categoria->idSuperCategory, $categoria->name)) {
+    echo("Se insertó");
+}
+else
+    echo("Nada")
+
 
 ?>
