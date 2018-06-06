@@ -453,13 +453,12 @@ function storeListar()
 function categoryInsertar()
 {
 
-    if(isset( $_POST["idCategory"]) && isset($_POST["idSuperCategory"]) && isset($_POST["name"]) )
+    if(isset( isset($_POST["idSuperCategory"]) && isset($_POST["name"]) )
     {
-        $idCategory = $_POST["idCategory"];
         $idSuperCategory = $_POST["idSuperCategory"];
         $name = $_POST["name"];
-        $product = new Category();
-        if($product->insertCategory($idCategory, $idSuperCategory, $name) == true)
+        $category = new Category();
+        if($category->insertCategory($idSuperCategory, $name) == true)
         {
             echo "Ha insertado el producto satisfactoriamente!";
         }else{
@@ -471,9 +470,9 @@ function categoryInsertar()
 
 function categoryEliminar()
 {
-    if(isset($_POST["codigoCategory"]))
+    if(isset($_POST["idCategory"]))
     {
-        $codigo = $_POST["codigoCategory"];
+        $codigo = $_POST["idCategory"];
         $category = new Category();
         if($category->removeCategoryById($codigo) == true)
         {
@@ -487,11 +486,11 @@ function categoryEliminar()
 function categoryModificar()
 {
     
-    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["depth"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["idCategory"]) && isset($_POST["idSuperCategory"]) && isset($_POST["name"]) )
     {
 
-        $product = new Product();
-        if($product->changeProductById($idCategory,$name,$width,$depth,$length,$price,$warranty) == true)
+        $category = new Category();
+        if($category->changeProductById($idCategory, $idSuperCategory ,$name) == true)
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{

@@ -40,11 +40,11 @@ class Category
      * @param   string  $name       Nombre de la categoria
      * @return  boolean
      */
-    function insertCategory($idCategory, $idSuperCategory, $name)
+    function insertCategory($idSuperCategory, $name)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "INSERT INTO category (idCategory, idSuperCategory, name) VALUES ('$idCategory', '$idSuperCategory', '$name')";
+        $sqlProcedure = "INSERT INTO category (idSuperCategory, name) VALUES ('$idSuperCategory', '$name')";
 
         if($result = $mysqli->query($sqlProcedure))
         {
