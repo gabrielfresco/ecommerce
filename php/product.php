@@ -19,6 +19,8 @@ require_once(dirname(__FILE__) . "/logFiles.php");
 *
 */
 
+// TODO: Cargar imaagen
+// http://www.marcorpsa.com/ee/t1525.html
 class Product
 {
     public $idProduct;
