@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2018 a las 05:03:51
+-- Tiempo de generación: 06-06-2018 a las 05:13:12
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `supervisada`
 --
+CREATE DATABASE IF NOT EXISTS `supervisada` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `supervisada`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `address`
 --
 
+DROP TABLE IF EXISTS `address`;
 CREATE TABLE IF NOT EXISTS `address` (
   `idAddress` int(11) NOT NULL,
   `idLocation` int(11) NOT NULL,
@@ -40,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 -- Estructura de tabla para la tabla `addresslist`
 --
 
+DROP TABLE IF EXISTS `addresslist`;
 CREATE TABLE IF NOT EXISTS `addresslist` (
   `idAddressList` int(11) NOT NULL,
   `idAddress` int(11) NOT NULL
@@ -51,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `addresslist` (
 -- Estructura de tabla para la tabla `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `idCategory` int(11) NOT NULL,
   `idSuperCategory` int(11) DEFAULT NULL,
@@ -70,6 +75,7 @@ INSERT INTO `category` (`idCategory`, `idSuperCategory`, `name`) VALUES
 -- Estructura de tabla para la tabla `city`
 --
 
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `idCity` int(11) NOT NULL,
   `idCountry` int(11) NOT NULL,
@@ -82,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `city` (
 -- Estructura de tabla para la tabla `country`
 --
 
+DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `idCountry` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -102,6 +109,7 @@ INSERT INTO `country` (`idCountry`, `name`) VALUES
 -- Estructura de tabla para la tabla `cupon`
 --
 
+DROP TABLE IF EXISTS `cupon`;
 CREATE TABLE IF NOT EXISTS `cupon` (
   `idCupon` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -115,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `cupon` (
 -- Estructura de tabla para la tabla `delivery`
 --
 
+DROP TABLE IF EXISTS `delivery`;
 CREATE TABLE IF NOT EXISTS `delivery` (
   `idDelivery` int(11) NOT NULL,
   `deliveryDate` varchar(255) NOT NULL,
@@ -130,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `delivery` (
 -- Estructura de tabla para la tabla `facture`
 --
 
+DROP TABLE IF EXISTS `facture`;
 CREATE TABLE IF NOT EXISTS `facture` (
   `idFacture` int(11) NOT NULL,
   `idOrder` int(11) NOT NULL,
@@ -143,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `facture` (
 -- Estructura de tabla para la tabla `location`
 --
 
+DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `idLocation` int(11) NOT NULL,
   `idCity` int(11) NOT NULL,
@@ -155,6 +166,7 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- Estructura de tabla para la tabla `order`
 --
 
+DROP TABLE IF EXISTS `order`;
 CREATE TABLE IF NOT EXISTS `order` (
   `idOrder` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
@@ -172,6 +184,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- Estructura de tabla para la tabla `orderdetail`
 --
 
+DROP TABLE IF EXISTS `orderdetail`;
 CREATE TABLE IF NOT EXISTS `orderdetail` (
   `idProduct` int(11) NOT NULL,
   `idOrder` int(11) NOT NULL,
@@ -185,6 +198,7 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
 -- Estructura de tabla para la tabla `payment`
 --
 
+DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `idPayment` int(11) NOT NULL,
   `typePayment` varchar(255) NOT NULL,
@@ -200,6 +214,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
 -- Estructura de tabla para la tabla `pricepostalcode`
 --
 
+DROP TABLE IF EXISTS `pricepostalcode`;
 CREATE TABLE IF NOT EXISTS `pricepostalcode` (
   `diffCP` int(11) NOT NULL,
   `price` float NOT NULL
@@ -211,6 +226,7 @@ CREATE TABLE IF NOT EXISTS `pricepostalcode` (
 -- Estructura de tabla para la tabla `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `idProduct` int(11) NOT NULL,
   `idCategory` int(11) NOT NULL,
@@ -229,6 +245,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Estructura de tabla para la tabla `stock`
 --
 
+DROP TABLE IF EXISTS `stock`;
 CREATE TABLE IF NOT EXISTS `stock` (
   `idStore` int(11) NOT NULL,
   `idProduct` int(11) NOT NULL,
@@ -241,6 +258,7 @@ CREATE TABLE IF NOT EXISTS `stock` (
 -- Estructura de tabla para la tabla `store`
 --
 
+DROP TABLE IF EXISTS `store`;
 CREATE TABLE IF NOT EXISTS `store` (
   `idStore` int(11) NOT NULL,
   `idAddress` int(11) NOT NULL,
@@ -254,6 +272,7 @@ CREATE TABLE IF NOT EXISTS `store` (
 -- Estructura de tabla para la tabla `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
