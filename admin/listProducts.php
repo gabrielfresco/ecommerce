@@ -157,8 +157,7 @@
                                     ?>
                                     <tr>
                                        <th scope="row"><?php echo $count; ?></th>
-                                       <td>
-                                       </td>
+                                       <td><?php echo $producto["name"]; ?></td>
                                        <td>
                                           <?php 
                                           $categoria = new Category();
