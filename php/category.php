@@ -52,7 +52,7 @@ class Category
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No pudo insertar la ciudad.");
+            new LogFiles(__FUNCTION__,"No pudo insertar la categoria.");
         }
         return false;
     }
@@ -81,7 +81,7 @@ class Category
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver la ciudad.");
+            new LogFiles(__FUNCTION__,"No puede devolver la categoria.");
             header(ERROR_404);
         }
     }
@@ -109,7 +109,7 @@ class Category
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver la ciudad");
+            new LogFiles(__FUNCTION__,"No puede devolver la categoria");
             header(ERROR_404);
         }
     }
@@ -117,9 +117,9 @@ class Category
      /**
      * Update city by idCity
      * 
-     * @param   integer $idCity     Id de la ciudad
-     * @param   integer $idCountry  Id del pais
-     * @param   string  $name       Nombre de la ciudad
+     * @param   integer $idCategory     Id de la categoria
+     * @param   integer $idSuperCategory  Id de la categoria padre
+     * @param   string  $name       Nombre de la categoria
      * @return  boolean
      */
     function changeCategoryById($idCategory = null, $idSuperCategory = null, $name = "")
@@ -152,13 +152,13 @@ class Category
                         return true;
                     }else{
                         # Devuelvo el nombre de la funcion y texto
-                        new LogFiles(__FUNCTION__,"No pudo actualizar la ciudad.");
+                        new LogFiles(__FUNCTION__,"No pudo actualizar la categoria.");
                     }
             }else{
-                new LogFiles(__FUNCTION__,"No pudo actualizar la ciudad porque no llegaron valores.");
+                new LogFiles(__FUNCTION__,"No pudo actualizar la categoria porque no llegaron valores.");
             }
         }else{
-            new LogFiles(__FUNCTION__,"La ciudad debe tener id antes de modificar.");
+            new LogFiles(__FUNCTION__,"La categoria debe tener id antes de modificar.");
         }
         return false;
     }
@@ -181,7 +181,7 @@ class Category
             return true;
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No pudo eliminar la ciudad.");
+            new LogFiles(__FUNCTION__,"No pudo eliminar la categoria.");
         }
         return false;
     }
@@ -208,7 +208,7 @@ class Category
 
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver todos las ciudades");
+            new LogFiles(__FUNCTION__,"No puede devolver todos las categorias");
             header(ERROR_404);
         }
         return null;
@@ -236,7 +236,7 @@ class Category
 
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver todos las ciudades");
+            new LogFiles(__FUNCTION__,"No puede devolver todos las categorias");
             header(ERROR_404);
         }
         return null;
