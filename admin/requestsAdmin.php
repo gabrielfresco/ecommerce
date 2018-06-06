@@ -450,38 +450,34 @@ function storeListar()
 
 /* Categories */
 
-function categoryEliminar()
+function categoryInsertar()
 {
-    if(isset($_POST["codigoProduct"]))
+
+    if(isset( $_POST["idCategory"]) && isset($_POST["idSuperCategory"]) && isset($_POST["name"]) )
     {
-        $codigo = $_POST["codigoProduct"];
-        $product = new Product();
-        if($product->removeProductById($codigo) == true)
+        $idCategory = $_POST["idCategory"];
+        $idSuperCategory = $_POST["idSuperCategory"];
+        $name = $_POST["name"];
+        $product = new Category();
+        if($product->insertCategory($idCategory, $idSuperCategory, $name) == true)
         {
-            echo "Ha eliminado el producto satisfactoriamente!";
+            echo "Ha insertado el producto satisfactoriamente!";
         }else{
             echo "Algo mal ha ocurrido.";
         }
     }
 }
 
-function categoryInsertar()
+
+function categoryEliminar()
 {
-
-    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["codigoCategory"]))
     {
-        $idCategory = $_POST["idCategory"];
-        $name = $_POST["name"];
-        $width = $_POST["width"];
-        $prof = $_POST["prof"];
-        $length = $_POST["length"];
-        $price = $_POST["price"];
-        $warranty = $_POST["warranty"];
-
-        $product = new Product();
-        if($product->insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        $codigo = $_POST["codigoCategory"];
+        $category = new Category();
+        if($category->removeCategoryById($codigo) == true)
         {
-            echo "Ha insertado el producto satisfactoriamente!";
+            echo "Ha eliminado el producto satisfactoriamente!";
         }else{
             echo "Algo mal ha ocurrido.";
         }
@@ -499,7 +495,9 @@ function categoryModificar()
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{
-         
+            echo "Algo mal ha ocurrido.";
+        }
+    }     
 }
 
 function categoryListar()
@@ -561,7 +559,9 @@ function productModificar()
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{
-         
+            echo "Algo mal ha ocurrido.";
+        }
+    }     
 }
 
 function productListar()
