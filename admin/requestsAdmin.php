@@ -73,7 +73,7 @@ if(isset($_POST))
                         locationListar();
                         break;
                 }
-            break;
+                break;
 
             case "store":
                 switch ($action)
@@ -91,7 +91,25 @@ if(isset($_POST))
                         storeListar();
                         break;
                 }
-            break;
+                break;
+
+            case "product":
+                switch ($action)
+                {
+                    case "add":
+                        productInsertar();
+                        break;
+                    case "remove":
+                        productEliminar();
+                        break;
+                    case "modify";
+                        productModificar();
+                        break;
+                    case "view":
+                        productListar();
+                        break;
+                }
+                break;
         }
     }
 }
@@ -405,6 +423,72 @@ function storeListar()
 {
     $store = new Store();
     return $store->getListOfStores();
+
+}
+
+
+/* Products */
+
+function productEliminar()
+{
+    if(isset($_POST["codigoProduct"]))
+    {
+        $codigo = $_POST["codigoProduct"];
+        $product = new Product();
+        if($product->removeProductById($codigo) == true)
+        {
+            echo "Ha eliminado el producto satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
+}
+
+function productInsertar()
+{
+
+    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    {
+        $idCategory = $_POST["idCategory"];
+        $name = $_POST["name"];
+        $width = $_POST["width"];
+        $prof = $_POST["prof"];
+        $length = $_POST["length"];
+        $price = $_POST["price"];
+        $warranty = $_POST["warranty"];
+
+        $product = new Product();
+        if($product->insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        {
+            echo "Ha insertado el producto satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
+}
+
+function productModificar()
+{
+    
+    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    {
+
+        $product = new Product();
+        if($product->changeProductById($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        {
+            echo "Ha modificado el producto satisfactoriamente!";
+        }else{
+            echo "Algo mal ha ocurrido.";
+        }
+    }
+    
+
+}
+
+function productListar()
+{
+    $product = new Product();
+    return $product->getListOfProducts();
 
 }
 ?>

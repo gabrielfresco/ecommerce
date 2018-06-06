@@ -290,6 +290,113 @@ function eliminarStore(codigoStore)
 }
 
 
+
+/**
+ * 
+ * Products
+ * 
+ */
+
+
+function insertProduct()
+{
+    console.log("inserte producto");
+    $.ajax
+    ({
+        type: "POST",
+        url: "requestsAdmin.php",
+        data:({
+            request: "product",
+            action: "add",
+            idCategory: document.getElementById('idCategory').value,
+            name: document.getElementById('name').value,
+            width: document.getElementById('width').value,
+            prof: document.getElementById('prof').value,
+            length: document.getElementById('length').value,
+            price: document.getElementById('price').value,
+            warranty: document.getElementById('warranty').value,
+    }),          
+        cache: false,
+        dataType: "text",
+        success:  function (dato)
+        { 
+            messageBox = document.getElementById('message')
+            if(messageBox)
+            {
+                messageBox.innerHTML = dato;
+                
+                
+            }
+            //alert("");
+        }
+    });
+}
+
+function modificarProduct()
+{
+    console.log("Modifique producto");
+    $.ajax
+    ({
+        type: "POST",
+        url: "modifyProduct.php",
+        data:({
+            request: "product",
+            action: "modify",
+            idProduct: document.getElementById('idProduct').value,
+            idCategory: document.getElementById('idCategory').value,
+            name: document.getElementById('name').value,
+            width: document.getElementById('width').value,
+            prof: document.getElementById('prof').value,
+            length: document.getElementById('length').value,
+            price: document.getElementById('price').value,
+            warranty: document.getElementById('warranty').value,
+    }),          
+        cache: false,
+        dataType: "text",
+        success:  function (dato)
+        { 
+            messageBox = document.getElementById('message')
+            if(messageBox)
+            {
+                messageBox.innerHTML = dato;
+                
+                
+            }
+            //alert("");
+        }
+    });
+}
+
+function eliminarProduct(idProduct)
+{
+    console.log("elimine producto");
+    $.ajax
+    ({
+        type: "POST",
+        url: "requestsAdmin.php",
+        data:({
+            request: "product",
+            action: "remove",
+            idProduct: idProduct
+    }),          
+        cache: false,
+        dataType: "text",
+        success:  function (dato)
+        { 
+            
+            messageBox = document.getElementById('messageListar')
+            if(messageBox)
+            {
+                messageBox.innerHTML = dato;
+                
+            }
+            //alert("");
+        }
+    });
+}
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
     /* al terminar de cargar la pagina hace esto */
 
