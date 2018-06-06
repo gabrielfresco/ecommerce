@@ -195,7 +195,7 @@ class Category
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM category WHERE idSuperCategory = 0";
+        $sqlProcedure = "SELECT * FROM category WHERE idSuperCategory = '0'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
@@ -223,7 +223,7 @@ class Category
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM category WHERE NOT idSuperCategory = 0";
+        $sqlProcedure = "SELECT * FROM category WHERE NOT idSuperCategory = '0'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
