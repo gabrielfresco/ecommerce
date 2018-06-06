@@ -311,7 +311,7 @@ function insertProduct()
             idCategory: document.getElementById('idCategory').value,
             name: document.getElementById('name').value,
             width: document.getElementById('width').value,
-            prof: document.getElementById('prof').value,
+            depth: document.getElementById('depth').value,
             length: document.getElementById('length').value,
             price: document.getElementById('price').value,
             warranty: document.getElementById('warranty').value,
@@ -346,7 +346,7 @@ function modificarProduct()
             idCategory: document.getElementById('idCategory').value,
             name: document.getElementById('name').value,
             width: document.getElementById('width').value,
-            prof: document.getElementById('prof').value,
+            depth: document.getElementById('depth').value,
             length: document.getElementById('length').value,
             price: document.getElementById('price').value,
             warranty: document.getElementById('warranty').value,
@@ -359,8 +359,6 @@ function modificarProduct()
             if(messageBox)
             {
                 messageBox.innerHTML = dato;
-                
-                
             }
             //alert("");
         }
@@ -387,8 +385,8 @@ function eliminarProduct(idProduct)
             messageBox = document.getElementById('messageListar')
             if(messageBox)
             {
+                actualizarTabla("table-products");
                 messageBox.innerHTML = dato;
-                
             }
             //alert("");
         }

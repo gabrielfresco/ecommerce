@@ -131,10 +131,10 @@
             <section class="no-padding-top no-padding-bottom">
                <div class="container-fluid">
                   <div class="row">
-                  <div id="table-cities">
+                  <div id="table-products">
                         <div class="col">
                            <div class="block margin-bottom-sm">
-                              <div class="title"><strong>Lista de ciudades</strong></div>
+                              <div class="title"><strong>Lista de productos</strong></div>
                               <table class="table">
                                  <thead>
                                     <tr>
@@ -150,7 +150,7 @@
                                  </thead>
                                  <tbody>
                                     <?php
-                                       $productos = productoListar();
+                                       $productos = productListar();
                                        $count = 1;
                                        foreach ($productos as $producto)
                                        {
@@ -166,6 +166,11 @@
                                           echo $categoria->name;
                                           ?>
                                        </td>
+                                       <td><?php echo $producto["price"]; ?></td>
+                                       <td><?php echo $producto["warranty"]; ?></td>
+                                       <td><?php echo $producto["width"]; ?></td>
+                                       <td><?php echo $producto["length"]; ?></td>
+                                       <td><?php echo $producto["depth"]; ?></td>
                                        <td>
                                          <form method="POST" action="modifyProducts.php">
                                            <input type="hidden" id="idProduct" name="idProduct" value="<?php echo $producto["idProduct"]; ?>">
@@ -183,7 +188,6 @@
                               <div id="messageListar"></div>
                            </div>
                         </div>
-                     </div>
                      </div>
                   </div>
                </div>

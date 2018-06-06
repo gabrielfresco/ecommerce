@@ -137,18 +137,18 @@
                            <div class="block-body">
                            <div class="form-group">
                                     <label class="form-control-label">Nombre de producto</label>
-                                    <input type="text" placeholder="Nombre" id="nombre" class="form-control">
+                                    <input type="text" placeholder="Nombre" id="name" class="form-control">
                                   </div>
                                   <div class="form-group">       
                                     <label class="form-control-label">Categoria</label>
-                                    <select class="form-control" id="codigoCategory">
+                                    <select class="form-control" id="idCategory">
                                       <?php
-                                          $categorias = Category();
+                                          $categorias = categoryListar();
                                           foreach ($categorias as $category)
                                           {
                                       ?>
                                       <option value="<?php echo $category["idCategory"];?>"><?php echo $category["name"]; ?></option>
-                                          <?php } ?>
+                                    <?php } ?>
                                     </select>
                                   </div>
                                   <div class="form-group">       
@@ -161,7 +161,7 @@
                                     </div>
                                       <div class="form-group">       
                                             <label class="form-control-label">Profundidad del producto</label>
-                                            <input type="text" placeholder="Profundidad" id="prof" class="form-control">
+                                            <input type="text" placeholder="Profundidad" id="depth" class="form-control">
                                     </div>
                                     <div class="form-group">       
                                             <label class="form-control-label">Precio unitario</label>

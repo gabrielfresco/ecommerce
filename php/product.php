@@ -28,18 +28,18 @@ class Product
     public $name;
     public $width;
     public $length;
-    public $prof;
+    public $depth;
     public $price;
     public $warranty;
 
-    function __construct($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $prof = null, $price = null, $warranty = null)
+    function __construct($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $depth = null, $price = null, $warranty = null)
     {
         $this->idProduct = $idProduct;
         $this->idCategory = $idCategory;
         $this->name = $name;
         $this->width = $width;
         $this->length = $length;
-        $this->prof = $prof;
+        $this->depth = $depth;
         $this->price = $price;
         $this->warranty = $warranty;
     }
@@ -55,12 +55,11 @@ class Product
      * @param   string  $warranty           Garantia
      * @return  boolean
      */
-    function insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty)
+    function insertProduct($idCategory,$name,$width,$depth,$length,$price,$warranty)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "INSERT INTO product (idCategory, name, width, prof, length, price, warranty) VALUES ('$idCategory','$width','$prof','$length','$name','$price','$warranty')";
-
+        $sqlProcedure = "INSERT INTO product (idCategory, name, width, depth, length, price, warranty) VALUES ('$idCategory','$name','$width','$depth','$length','$price','$warranty')";
         if($result = $mysqli->query($sqlProcedure))
         {
             $this->idCity = $mysqli->insert_id;
@@ -95,7 +94,7 @@ class Product
                 $this->name = $row["name"];
                 $this->width = $row["width"];
                 $this->length = $row["length"];
-                $this->prof = $row["prof"];
+                $this->depth = $row["depth"];
                 $this->price = $row["price"];
                 $this->warranty = $row["warranty"];
             }
@@ -128,7 +127,7 @@ class Product
                 $this->name = $row["name"];
                 $this->width = $row["width"];
                 $this->length = $row["length"];
-                $this->prof = $row["prof"];
+                $this->depth = $row["depth"];
                 $this->price = $row["price"];
                 $this->warranty = $row["warranty"];
             }
@@ -147,12 +146,12 @@ class Product
      * @param   string  $name           Nombre del producto
      * @param   float   $width          Ancho del producto
      * @param   float   $heigth         Alto del producto
-     * @param   float   $prof           Profundidad del producto
+     * @param   float   $depth           depthundidad del producto
      * @param   float   $price          Precio del producto
      * @param   string  $warranty       Garantia del producto
      * @return  boolean
      */
-    function changeProductById($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $prof = null, $price = null, $warranty = null)
+    function changeProductById($idProduct = null, $idCategory = null, $name = null, $width = null, $length = null, $depth = null, $price = null, $warranty = null)
     {
         if($idProduct != null)
         {
@@ -178,9 +177,9 @@ class Product
                 $queryModified .= "length='".$length."',";
             }
 
-            if($prof!= null)
+            if($depth!= null)
             {
-                $queryModified .= "prof='".$prof."',";
+                $queryModified .= "depth='".$depth."',";
             }
 
             if($price!= null)

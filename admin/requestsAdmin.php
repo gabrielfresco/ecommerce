@@ -468,18 +468,18 @@ function categoryEliminar()
 function categoryInsertar()
 {
 
-    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["depth"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
     {
         $idCategory = $_POST["idCategory"];
         $name = $_POST["name"];
         $width = $_POST["width"];
-        $prof = $_POST["prof"];
+        $depth = $_POST["depth"];
         $length = $_POST["length"];
         $price = $_POST["price"];
         $warranty = $_POST["warranty"];
 
         $product = new Product();
-        if($product->insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        if($product->insertProduct($idCategory,$name,$width,$depth,$length,$price,$warranty) == true)
         {
             echo "Ha insertado el producto satisfactoriamente!";
         }else{
@@ -491,21 +491,23 @@ function categoryInsertar()
 function categoryModificar()
 {
     
-    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["depth"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
     {
 
         $product = new Product();
-        if($product->changeProductById($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        if($product->changeProductById($idCategory,$name,$width,$depth,$length,$price,$warranty) == true)
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{
-         
+            echo "Algo mal ha ocurrido.";
+        }
+    }
 }
 
 function categoryListar()
 {
-    $product = new Product();
-    return $product->getListOfProducts();
+    $category = new Category();
+    return $category->getListOfCategories();
 
 }
 
@@ -514,9 +516,9 @@ function categoryListar()
 
 function productEliminar()
 {
-    if(isset($_POST["codigoProduct"]))
+    if(isset($_POST["idProduct"]))
     {
-        $codigo = $_POST["codigoProduct"];
+        $codigo = $_POST["idProduct"];
         $product = new Product();
         if($product->removeProductById($codigo) == true)
         {
@@ -530,18 +532,18 @@ function productEliminar()
 function productInsertar()
 {
 
-    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["depth"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
     {
         $idCategory = $_POST["idCategory"];
         $name = $_POST["name"];
         $width = $_POST["width"];
-        $prof = $_POST["prof"];
+        $depth = $_POST["depth"];
         $length = $_POST["length"];
         $price = $_POST["price"];
         $warranty = $_POST["warranty"];
 
         $product = new Product();
-        if($product->insertProduct($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        if($product->insertProduct($idCategory,$name,$width,$depth,$length,$price,$warranty) == true)
         {
             echo "Ha insertado el producto satisfactoriamente!";
         }else{
@@ -553,15 +555,17 @@ function productInsertar()
 function productModificar()
 {
     
-    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["prof"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
+    if(isset($_POST["idProduct"]) && isset($_POST["idCategory"]) && isset($_POST["name"]) && isset($_POST["width"]) && isset($_POST["depth"]) && isset($_POST["length"]) && isset($_POST["price"]) && isset($_POST["warranty"]))
     {
 
         $product = new Product();
-        if($product->changeProductById($idCategory,$name,$width,$prof,$length,$price,$warranty) == true)
+        if($product->changeProductById($idCategory,$name,$width,$depth,$length,$price,$warranty) == true)
         {
             echo "Ha modificado el producto satisfactoriamente!";
         }else{
-         
+            echo "Algo mal ha ocurrido.";
+        }
+    }
 }
 
 function productListar()
