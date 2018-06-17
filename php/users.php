@@ -21,45 +21,28 @@ require_once("logFiles.php");
 
 class User
 {
+    const STATE_ACTIVE = 1;
+    const STATE_BLOCKED = 2;
+    const STATE_DELETED = 3;
+
+    const PRIVILEGE_ADMIN = 1;
+    const PRIVILEGE_BUYER = 2;
 
     private $id;
-    private $username;
+    private $firstName;
+    private $lastName;
     private $password;
     private $email;
     private $state;
     private $privilege;
+    private $createdAt;
+    private $dni;
+    private $idAddressList;
 
-    /**
-     * Find one user by name
-     * 
-     * @param   string  $nombre Nombre del usuario
-     * @return  void
-     */
-    function findUserByName($nombre)
-    {
-        $db = Database::getInstance();
-        $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM users WHERE username='$nombre' LIMIT 1";
-
-        if($result = $mysqli->query($sqlProcedure))
-        {
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            if(count($row) > 0)
-            {
-                $this->id = $row["id"];
-                $this->username = $row["username"];
-                $this->password = $row["password"];
-                $this->email = $row["email"];
-                $this->state = $row["state"];
-                $this->privilege = $row["privilege"];
-            }
-        }else{
-            # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el usuario.");
-            header(ERROR_404);
-        }
+    function __construct() {
+        $this->createdAt = new DateTime();
     }
-
+    
      /**
      * Find one user by id
      * 
@@ -70,7 +53,7 @@ class User
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM users WHERE id='$id' LIMIT 1";
+        $sqlProcedure = "SELECT * FROM user WHERE id='$id' LIMIT 1";
 
         if($result = $mysqli->query($sqlProcedure))
         {
@@ -78,7 +61,8 @@ class User
             {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $this->id = $row["id"];
-                $this->username = $row["username"];
+                $this->fistName = $row["firstName"];
+                $this->lastName = $row["lastName"];
                 $this->password = $row["password"];
                 $this->email = $row["email"];
                 $this->state = $row["state"];
@@ -101,7 +85,7 @@ class User
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+        $sqlProcedure = "SELECT * FROM user WHERE email='$email' LIMIT 1";
 
         if($result = $mysqli->query($sqlProcedure))
         {
@@ -109,17 +93,21 @@ class User
             if(count($row) > 0)
             {
                 $this->id = $row["id"];
-                $this->username = $row["username"];
+                $this->fistName = $row["firstName"];
+                $this->lastName = $row["lastName"];
                 $this->password = $row["password"];
                 $this->email = $row["email"];
                 $this->state = $row["state"];
                 $this->privilege = $row["privilege"];
+                $this->createAt = $row["createdAt"];
             }
         }else{
             # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el usuario.");
+            new LogFiles(__FUNCTION__,"No puede devolver el usuario. " . $sqlProcedure);
             header(ERROR_404);
         }
+
+        
     }
 
     /**
@@ -167,41 +155,17 @@ class User
         }
         return false;
     }
-
-     /**
-     * Update state by username
-     * 
-     * @param string $username  Nombre del usuario
-     * @param string $state Nuevo estado
-     * @return boolean
-     */
-    function changeStateByUsername($username,$state)
-    {
-        $db = Database::getInstance();
-        $mysqli = $db->getConnection(); 
-        $sqlProcedure = "UPDATE users SET state='$state' WHERE usename='$username'";
-
-        if($result = $mysqli->query($sqlProcedure))
-        {
-            return true;
-        }else{
-            # Devuelvo el nombre de la funcion y texto
-            new LogFiles(__FUNCTION__,"No puede devolver el usuario.");
-        }
-        return false;
-    }
-
      /**
      * Find multiples users by state
      * 
      * @param   string  $state Estado del usuario
      * @return void
      */
-    function findUsersByEmail($state)
+    function findUsersByState($state)
     {
         $db = Database::getInstance();
         $mysqli = $db->getConnection(); 
-        $sqlProcedure = "SELECT * FROM users WHERE state='$state'";
+        $sqlProcedure = "SELECT * FROM user WHERE state='$state'";
 
         if($result = $mysqli->query($sqlProcedure))
         {
@@ -209,7 +173,8 @@ class User
             if(count($row) > 0)
             {
                 $this->id = $row["id"];
-                $this->username = $row["username"];
+                $this->lastName = $row["lastname"];
+                $this->firstName = $row["firstname"];
                 $this->password = $row["password"];
                 $this->email = $row["email"];
                 $this->state = $row["state"];
@@ -233,13 +198,23 @@ class User
         return $this->id;
     }
     /**
-     * Get username
+     * Get firstname
      * @return string
      */
-    function getUsername()
+    function getFirstname()
     {
-        return $this->username;
+        return $this->firstName;
     }
+
+       /**
+     * Get lastname
+     * @return string
+     */
+     function getLastname()
+     {
+         return $this->lastName;
+     }
+ 
 
     /**
      * Get email
@@ -276,11 +251,96 @@ class User
     {
         return $this->privilege;
     }
-}
 
-//Test:
-$us = new User();
-//var_dump($us);
-$us->findUserByName("juan");
-echo $us->getUsername();
+        /**
+     * Get id
+     * @return integer
+     */
+     function setId($id)
+     {
+         $this->id = $id;
+     }
+     /**
+      * Get firstname
+      * @return string
+      */
+     function setFirstname($firstName)
+     {
+         $this->firstName = $firstName;
+     }
+ 
+        /**
+      * Get lastname
+      * @return string
+      */
+      function setLastname($lastname)
+      {
+          $this->lastName = $lastname;
+      }
+  
+ 
+     /**
+      * Get email
+      * @return string
+      */
+     function setEmail($email)
+     {
+         $this->email = $email;
+     }
+ 
+     /**
+      * Get password
+      * @return string
+      */
+     function setPassword($password)
+     {
+        $this->password = $password;
+     }
+ 
+     /**
+      * Get state
+      * @return string
+      */
+     function setState($state)
+     {
+        $this->state = $state;
+     }
+ 
+     /**
+      * Get privilege
+      * @return string
+      */
+     function setPrivilege($privilege)
+     {
+        $this->privilege = $privilege;
+     }
+    
+     function insert()
+     {
+         $date = $this->createdAt->format("y/m/d H:i");
+         $db = Database::getInstance();
+         $mysqli = $db->getConnection(); 
+         $sqlProcedure = "INSERT INTO user (
+         email,
+         password,
+         state,
+         privilege,
+         createdAt,
+         idAddressList,
+         dni,
+         firstName,
+         lastName) VALUES ('$this->email','$this->password',$this->state,$this->privilege, '$date', null,null,'$this->firstName','$this->lastName')";
+ 
+         if($result = $mysqli->query($sqlProcedure))
+         {
+             $this->id = $mysqli->insert_id;
+             return true;
+         }else{
+             # Devuelvo el nombre de la funcion y texto
+             new LogFiles(__FUNCTION__,"No pudo insertar el usuario.");
+             new LogFiles(__FUNCTION__, $sqlProcedure);
+         }
+         return false;
+     }
+}
 ?>

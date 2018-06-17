@@ -3,7 +3,7 @@
 
 # MYSQL
 define("SQL_USERNAME","root");
-define("SQL_PASSWORD","admin");
+define("SQL_PASSWORD","root");
 define("SQL_DATABASE","supervisada");
 define("SQL_HOSTNAME","127.0.0.1");
 
